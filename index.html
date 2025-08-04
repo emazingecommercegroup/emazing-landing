@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E‑MAZING Commerce Group | Digital Redefined</title>
   <meta name="description" content="E‑MAZING Commerce Group helps CPG brands redefine their digital presence.">
-
-  <!-- Open Graph for sharing -->
   <meta property="og:title" content="E‑MAZING Commerce Group | Digital Redefined">
   <meta property="og:description" content="Helping CPG brands redefine their digital presence.">
   <meta property="og:image" content="/assets/og-preview.png">
@@ -14,14 +12,14 @@
   <meta property="og:url" content="https://e-mazingcommercegroup.com">
 
   <!-- Favicons -->
-  <link rel="icon" type="image/png" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" href="/assets/favicon-32.png?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
 
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Google Analytics (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCM553SS6L"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -30,19 +28,33 @@
     gtag('config', 'G-YCM553SS6L');
   </script>
 
-  <!-- Scroll depth & time tracking -->
+  <!-- Email Click Tracking -->
   <script>
-    document.addEventListener('scroll', function() {
-      let scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
-      if (scrollPercent >= 25 && !window.scroll25) { gtag('event', 'scroll_depth', { 'event_label': '25%' }); window.scroll25 = true; }
-      if (scrollPercent >= 50 && !window.scroll50) { gtag('event', 'scroll_depth', { 'event_label': '50%' }); window.scroll50 = true; }
-      if (scrollPercent >= 75 && !window.scroll75) { gtag('event', 'scroll_depth', { 'event_label': '75%' }); window.scroll75 = true; }
-      if (scrollPercent >= 100 && !window.scroll100) { gtag('event', 'scroll_depth', { 'event_label': '100%' }); window.scroll100 = true; }
+    document.addEventListener('click', function (e) {
+      let target = e.target.closest('a');
+      if (target && target.href.includes('mailto:')) {
+        gtag('event', 'email_click', {
+          event_category: 'Engagement',
+          event_label: target.href
+        });
+      }
     });
+  </script>
 
-    // Time-on-page tracking
-    setTimeout(function() { gtag('event', 'time_on_page', { 'event_label': '30_seconds' }); }, 30000);
-    setTimeout(function() { gtag('event', 'time_on_page', { 'event_label': '60_seconds' }); }, 60000);
+  <!-- Scroll Depth & Time Tracking -->
+  <script>
+    document.addEventListener('scroll', function () {
+      let scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+      if (scrollPercent > 25) gtag('event', 'scroll_depth', { depth: '25%' });
+      if (scrollPercent > 50) gtag('event', 'scroll_depth', { depth: '50%' });
+      if (scrollPercent > 75) gtag('event', 'scroll_depth', { depth: '75%' });
+    });
+    setTimeout(function () {
+      gtag('event', 'time_on_page', { time: '30s' });
+    }, 30000);
+    setTimeout(function () {
+      gtag('event', 'time_on_page', { time: '60s' });
+    }, 60000);
   </script>
 </head>
 <body>
@@ -51,8 +63,7 @@
       <img src="/assets/logo-full.png" alt="E‑MAZING Commerce Group Logo" class="logo">
     </div>
     <h1 class="title">E‑MAZING Commerce Group</h1>
-    <h2 class="tagline">E‑MAZING Results Through Digital Excellence.</h2>
-    <h3 class="sub-tagline">Please be patient while we build out our website. For any inquiries please send an email.</h3>
+    <h2 class="tagline">E‑MAZING Results Through Digital Excellence.<br>Please be patient while we build out our website. For any inquiries please send an email.</h2>
   </header>
 
   <main class="about">
@@ -67,25 +78,14 @@
     </p>
   </main>
 
-  <!-- Hidden Mailing List Placeholder -->
-  <section id="mailing-list" style="display:none;">
-    <h3>Join Our Mailing List</h3>
-    <form>
-      <input type="email" placeholder="Your email" disabled>
-      <button disabled>Coming Soon</button>
-    </form>
-  </section>
-
   <section class="contact">
     <h3>Contact</h3>
     <p>Jennifer Angelus, Founder</p>
-    <p><a href="mailto:jennifer@e-mazingcommercegroup.com" 
-      onclick="gtag('event', 'email_click', { 'event_category': 'Engagement', 'event_label': 'Email Click' });">
-      jennifer@e-mazingcommercegroup.com</a></p>
+    <p><a href="mailto:jennifer@e-mazingcommercegroup.com">jennifer@e-mazingcommercegroup.com</a></p>
   </section>
 
   <footer>
-    <p>© 2025 E‑MAZING Commerce Group<sup>TM</sup>. All Rights Reserved.</p>
+    <p>© 2025 E‑MAZING Commerce Group™. All Rights Reserved.</p>
   </footer>
 </body>
 </html>
