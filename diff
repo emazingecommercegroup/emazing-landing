@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E‑Mazing Commerce Group | Digital Redefined</title>
+  <meta name="description" content="E‑Mazing Commerce Group helps CPG brands redefine their digital presence.">
+  <!-- Open Graph for sharing -->
+  <meta property="og:title" content="E‑Mazing Commerce Group | Digital Redefined">
+  <meta property="og:description" content="Helping CPG brands redefine their digital presence.">
+  <meta property="og:image" content="/assets/og-preview.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Analytics (replace G-XXXXXX with your ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXX');
+  </script>
+</head>
+<body>
+  <header class="hero">
+    <div class="logo-container">
+      <!-- SVG Logo -->
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+        <!-- Placeholder simplified logo mark -->
+        <circle cx="250" cy="250" r="200" fill="#0D0D0D"/>
+        <path d="M150 350 Q250 100 350 350 Z" fill="#7C3AED"/>
+        <circle cx="250" cy="250" r="120" fill="#F5F5F5"/>
+      </svg>
+    </div>
+    <h1 class="title">E‑Mazing Commerce Group</h1>
+    <h2 class="tagline">E‑Mazing Results Through Your Digital Redefined. Coming Soon.</h2>
+  </header>
+
+  <main class="about">
+    <p>
+      E‑Mazing Commerce Group helps CPG brands redefine their digital presence. 
+      We combine the energy of a lion with the magic of a unicorn to deliver eCommerce strategies that drive conversion and growth. 
+      From auditing current strategies and conducting competitive assessments to building custom partner strategies and providing hands‑on digital execution support, 
+      we bring the 5Ps to life through our 5E model. 
+      E‑Mazing Commerce Group transforms possibilities into performance. 
+      The future of commerce starts here. 
+      We are Unrivaled. Inspired. Digital Redefined.
+    </p>
+  </main>
+
+  <!-- Hidden Mailing List Placeholder -->
+  <section id="mailing-list" style="display:none;">
+    <h3>Join Our Mailing List</h3>
+    <form>
+      <input type="email" placeholder="Your email" disabled>
+      <button disabled>Coming Soon</button>
+    </form>
+  </section>
+
+  <section class="contact">
+    <h3>Contact</h3>
+    <p>Jennifer Angelus, Founder</p>
+    <p><a href="mailto:jennifer@e-mazingcommercegroup.com">jennifer@e-mazingcommercegroup.com</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 E‑Mazing Commerce Group. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
