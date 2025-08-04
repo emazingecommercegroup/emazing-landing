@@ -3,52 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>E-MAZING Commerce Group | Digital Redefined</title>
-  <meta name="description" content="E-MAZING Commerce Group helps CPG brands redefine their digital presence.">
+  <title>E‑MAZING Commerce Group | Digital Redefined</title>
+  <meta name="description" content="E‑MAZING Commerce Group helps CPG brands redefine their digital presence.">
 
   <!-- Open Graph for sharing -->
-  <meta property="og:title" content="E-MAZING Commerce Group | Digital Redefined">
+  <meta property="og:title" content="E‑MAZING Commerce Group | Digital Redefined">
   <meta property="og:description" content="Helping CPG brands redefine their digital presence.">
   <meta property="og:image" content="/assets/og-preview.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://e-mazingcommercegroup.com">
 
-  <!-- Favicons (PNG only) -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png?v=2">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png?v=2">
-  <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png?v=2">
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
 
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Google Analytics (replace G-XXXXXX with your ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXX"></script>
+  <!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YCM553SS6L"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXX');
+    gtag('config', 'G-YCM553SS6L');
+  </script>
+
+  <!-- Scroll depth & time tracking -->
+  <script>
+    document.addEventListener('scroll', function() {
+      let scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+      if (scrollPercent >= 25 && !window.scroll25) { gtag('event', 'scroll_depth', { 'event_label': '25%' }); window.scroll25 = true; }
+      if (scrollPercent >= 50 && !window.scroll50) { gtag('event', 'scroll_depth', { 'event_label': '50%' }); window.scroll50 = true; }
+      if (scrollPercent >= 75 && !window.scroll75) { gtag('event', 'scroll_depth', { 'event_label': '75%' }); window.scroll75 = true; }
+      if (scrollPercent >= 100 && !window.scroll100) { gtag('event', 'scroll_depth', { 'event_label': '100%' }); window.scroll100 = true; }
+    });
+
+    // Time-on-page tracking
+    setTimeout(function() {
+      gtag('event', 'time_on_page', { 'event_label': '30_seconds' });
+    }, 30000);
+    setTimeout(function() {
+      gtag('event', 'time_on_page', { 'event_label': '60_seconds' });
+    }, 60000);
   </script>
 </head>
 <body>
   <header class="hero">
     <div class="logo-container">
-      <!-- Full Lion/Unicorn Logo (PNG) -->
-      <img src="/assets/logo-full.png" alt="E-MAZING Commerce Group Logo" class="logo">
+      <img src="/assets/logo-full.png" alt="E‑MAZING Commerce Group Logo" class="logo">
     </div>
-    <h1 class="title">E-MAZING Commerce Group</h1>
-    <h2 class="tagline">
-      E-MAZING Results Through Digital Excellence.<br>
-      Please be patient while we build out our website. For any inquiries please send an email.
-    </h2>
+    <h1 class="title">E‑MAZING Commerce Group</h1>
+    <h2 class="tagline">E‑MAZING Results Through Digital Excellence.</h2>
+    <h3 class="sub-tagline">Please be patient while we build out our website. For any inquiries please send an email.</h3>
   </header>
 
   <main class="about">
     <p>
-      E-MAZING Commerce Group helps CPG brands redefine their digital presence. 
+      E‑MAZING Commerce Group helps CPG brands redefine their digital presence. 
       We combine the energy of a lion with the magic of a unicorn to deliver eCommerce strategies that drive conversion and growth. 
-      From auditing current strategies and conducting competitive assessments to building custom partner strategies and providing hands-on digital execution support, 
+      From auditing current strategies and conducting competitive assessments to building custom partner strategies and providing hands‑on digital execution support, 
       we bring the 5Ps to life through our 5E model. 
-      E-MAZING Commerce Group transforms possibilities into performance. 
+      E‑MAZING Commerce Group transforms possibilities into performance. 
       The future of commerce starts here. 
       We are Unrivaled. Inspired. Digital Redefined.
     </p>
@@ -66,11 +83,13 @@
   <section class="contact">
     <h3>Contact</h3>
     <p>Jennifer Angelus, Founder</p>
-    <p><a href="mailto:jennifer@e-mazingcommercegroup.com">jennifer@e-mazingcommercegroup.com</a></p>
+    <p><a href="mailto:jennifer@e-mazingcommercegroup.com" 
+      onclick="gtag('event', 'email_click', { 'event_category': 'Engagement', 'event_label': 'Email Click' });">
+      jennifer@e-mazingcommercegroup.com</a></p>
   </section>
 
   <footer>
-    <p>© 2025 E-MAZING Commerce Group™. All Rights Reserved.</p>
+    <p>© 2025 E‑MAZING Commerce Group™. All Rights Reserved.</p>
   </footer>
 </body>
 </html>
