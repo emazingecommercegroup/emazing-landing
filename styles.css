@@ -1,0 +1,98 @@
+:root {
+  --black: #0D0D0D;
+  --violet: #7C3AED;
+  --white: #F5F5F5;
+  --lilac: #C084FC;
+  --emerald: #34D399;
+  --text-grey: #E0E0E0;
+}
+
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, var(--black), var(--violet));
+  color: var(--text-grey);
+  text-align: center;
+}
+
+/* Breathing gradient toggle */
+@keyframes breathing-gradient {
+  0% {background: linear-gradient(180deg, var(--black), var(--violet));}
+  50% {background: linear-gradient(180deg, var(--violet), var(--black));}
+  100% {background: linear-gradient(180deg, var(--black), var(--violet));}
+}
+/* Uncomment to enable:
+body {
+  animation: breathing-gradient 20s ease infinite;
+}
+*/
+
+/* HERO */
+.hero {
+  padding: 50px 20px;
+}
+.logo {
+  width: 150px;
+  max-width: 40%;
+  margin-bottom: 20px;
+}
+
+/* Logo glow toggle */
+/*
+.logo {
+  filter: drop-shadow(0 0 15px var(--lilac));
+}
+*/
+
+/* TEXT ANIMATIONS */
+.title, .tagline, .about p {
+  opacity: 1;
+}
+/* Uncomment to enable:
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+.title, .tagline, .about p {
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+}
+*/
+
+/* TITLES */
+.title {
+  font-size: 2.5rem;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.tagline {
+  font-size: 1.2rem;
+  color: var(--violet);
+}
+
+/* ABOUT */
+.about {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* CONTACT */
+.contact {
+  padding: 30px 20px;
+}
+.contact a {
+  color: var(--emerald);
+  text-decoration: none;
+}
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+  padding: 20px;
+  font-size: 0.8rem;
+  color: var(--text-grey);
+}
