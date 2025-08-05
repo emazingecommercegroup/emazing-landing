@@ -13,9 +13,9 @@
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="/assets/favicon-32.png?v=2">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png?v=2">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png?v=2">
 
   <link rel="stylesheet" href="styles.css">
 
@@ -28,15 +28,17 @@
     gtag('config', 'G-YCM553SS6L');
   </script>
 
-  <!-- Email Click Tracking -->
+  <!-- Email Click Tracking (with delay) -->
   <script>
     document.addEventListener('click', function (e) {
       let target = e.target.closest('a');
       if (target && target.href.includes('mailto:')) {
+        e.preventDefault(); // Pause default action
         gtag('event', 'email_click', {
           event_category: 'Engagement',
           event_label: target.href
         });
+        setTimeout(() => { window.location.href = target.href; }, 300); // Delay redirect to log event
       }
     });
   </script>
@@ -45,16 +47,13 @@
   <script>
     document.addEventListener('scroll', function () {
       let scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
-      if (scrollPercent > 25) gtag('event', 'scroll_depth', { depth: '25%' });
-      if (scrollPercent > 50) gtag('event', 'scroll_depth', { depth: '50%' });
-      if (scrollPercent > 75) gtag('event', 'scroll_depth', { depth: '75%' });
+      if (scrollPercent > 25 && !window.scroll25) { gtag('event', 'scroll_depth', { depth: '25%' }); window.scroll25 = true; }
+      if (scrollPercent > 50 && !window.scroll50) { gtag('event', 'scroll_depth', { depth: '50%' }); window.scroll50 = true; }
+      if (scrollPercent > 75 && !window.scroll75) { gtag('event', 'scroll_depth', { depth: '75%' }); window.scroll75 = true; }
+      if (scrollPercent > 100 && !window.scroll100) { gtag('event', 'scroll_depth', { depth: '100%' }); window.scroll100 = true; }
     });
-    setTimeout(function () {
-      gtag('event', 'time_on_page', { time: '30s' });
-    }, 30000);
-    setTimeout(function () {
-      gtag('event', 'time_on_page', { time: '60s' });
-    }, 60000);
+    setTimeout(function () { gtag('event', 'time_on_page', { time: '30s' }); }, 30000);
+    setTimeout(function () { gtag('event', 'time_on_page', { time: '60s' }); }, 60000);
   </script>
 </head>
 <body>
