@@ -54,4 +54,58 @@
   <!-- Email Click Tracking -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const emailLink = document
+      const emailLink = document.getElementById('email-link');
+      if (emailLink) {
+        emailLink.addEventListener('click', function() {
+          gtag('event', 'email_click', { 'event_category': 'engagement', 'event_label': 'Email Link Clicked' });
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="logo-container">
+      <img src="/assets/logo-full.png" alt="E‑MAZING Commerce Group Logo" class="logo">
+    </div>
+    <h1 class="title">E‑MAZING Commerce Group</h1>
+    <h2 class="tagline">E‑MAZING Results Through Digital Excellence.</h2>
+    <p>Please be patient while we build out our website. For any inquiries please send an email.</p>
+  </header>
+
+  <!-- ABOUT SECTION -->
+  <main class="about">
+    <p>
+      E‑MAZING Commerce Group helps CPG brands redefine their digital presence. 
+      We combine the energy of a lion with the magic of a unicorn to deliver eCommerce strategies that drive conversion and growth. 
+      From auditing current strategies and conducting competitive assessments to building custom partner strategies and providing hands‑on digital execution support, 
+      we bring the 5Ps to life through our 5E model. 
+      E‑MAZING Commerce Group transforms possibilities into performance. 
+      The future of commerce starts here. 
+      We are Unrivaled. Inspired. Digital Redefined.
+    </p>
+  </main>
+
+  <!-- MAILING LIST (HIDDEN) -->
+  <section id="mailing-list" style="display:none;">
+    <h3>Join Our Mailing List</h3>
+    <form>
+      <input type="email" placeholder="Your email" disabled>
+      <button disabled>Coming Soon</button>
+    </form>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <h3>Contact</h3>
+    <p>Jennifer Angelus, Founder</p>
+    <p><a id="email-link" href="mailto:jennifer@e-mazingcommercegroup.com">jennifer@e-mazingcommercegroup.com</a></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 E‑MAZING Commerce Group™. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
