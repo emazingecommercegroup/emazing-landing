@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
 :root {
-  --deep-black: #443C40;       /* Deep black for seamless top background */
-  --deep-purple: #1C0F28; /* Mid transition tone */
-  --violet: #7337D0;      /* Vibrant purple for page bottom */
+  --dark-grey-black: #443C40; /* Extracted from logo background */
+  --deep-purple: #1C0F28;     /* Mid transition tone */
+  --violet: #7337D0;          /* Vibrant purple for page bottom */
   --white: #F5F5F5;
   --lilac: #C084FC;
   --emerald: #34D399;
@@ -18,10 +18,10 @@ body {
   font-weight: 300; /* Light for body text */
   background: linear-gradient(
     180deg,
-    var(--deep-black) 0%,
-    var(--deep-black) 25%,       /* Keeps top fully black behind the logo */
-    var(--deep-purple) 50%, /* Smooth transition mid-page */
-    var(--violet) 100%      /* Ends in vibrant purple */
+    var(--dark-grey-black) 0%,   /* Seamless match for logo background */
+    var(--dark-grey-black) 40%,  /* Extend the dark top much further */
+    var(--deep-purple) 65%,      /* Smooth transition mid-page */
+    var(--violet) 100%           /* Ends in vibrant purple */
   );
   color: var(--text-grey);
   text-align: center;
@@ -46,11 +46,12 @@ body {
   color: var(--white);
   margin-bottom: 10px;
   font-weight: 700; /* Bold for strong visual impact */
+  letter-spacing: 0.5px;
 }
 .tagline {
   font-size: 1.2rem;
   color: var(--violet);
-  font-weight: 400; /* Slightly heavier than body for emphasis */
+  font-weight: 400;
 }
 
 /* ABOUT */
