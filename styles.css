@@ -18,8 +18,8 @@ body {
   font-weight: 300; /* Light for body text */
   background: linear-gradient(
     180deg,
-    var(--black) 0%,
-    var(--black) 25%,       /* Keeps top fully black behind the logo */
+    var(--deep-black) 0%,
+    var(--deep-black) 25%,       /* Keeps top fully black behind the logo */
     var(--deep-purple) 50%, /* Smooth transition mid-page */
     var(--violet) 100%      /* Ends in vibrant purple */
   );
