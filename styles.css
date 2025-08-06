@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
 :root {
-  --black: #000000;       /* Pure black for seamless top background */
+  --deep-black: #443C40;       /* Deep black for seamless top background */
   --deep-purple: #1C0F28; /* Mid transition tone */
   --violet: #7337D0;      /* Vibrant purple for page bottom */
   --white: #F5F5F5;
