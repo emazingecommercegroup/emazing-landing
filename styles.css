@@ -1,6 +1,10 @@
+/* IMPORT GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
 :root {
-  --black: #0D0D0D;
-  --violet: #7C3AED;
+  --black: #000000;       /* Pure black for seamless top background */
+  --deep-purple: #1C0F28; /* Mid transition tone */
+  --violet: #7337D0;      /* Vibrant purple for page bottom */
   --white: #F5F5F5;
   --lilac: #C084FC;
   --emerald: #34D399;
@@ -10,8 +14,15 @@
 /* GLOBAL */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(180deg, var(--black), var(--violet));
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300; /* Light for body text */
+  background: linear-gradient(
+    180deg,
+    var(--black) 0%,
+    var(--black) 25%,       /* Keeps top fully black behind the logo */
+    var(--deep-purple) 50%, /* Smooth transition mid-page */
+    var(--violet) 100%      /* Ends in vibrant purple */
+  );
   color: var(--text-grey);
   text-align: center;
 }
@@ -24,6 +35,9 @@ body {
   width: 200px;
   max-width: 60%;
   margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* TITLES */
@@ -31,10 +45,12 @@ body {
   font-size: 2.5rem;
   color: var(--white);
   margin-bottom: 10px;
+  font-weight: 700; /* Bold for strong visual impact */
 }
 .tagline {
   font-size: 1.2rem;
   color: var(--violet);
+  font-weight: 400; /* Slightly heavier than body for emphasis */
 }
 
 /* ABOUT */
