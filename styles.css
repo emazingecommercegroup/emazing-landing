@@ -1,5 +1,8 @@
+/* IMPORT GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
 :root {
-  --dark-grey-black: #0E0E0F; /* Updated to match intended background */
+  --dark-grey-black: #0E0E0F; /* Near-black matching logo background */
   --deep-purple: #1C0F28;     /* Mid transition tone */
   --violet: #7337D0;          /* Vibrant purple for page bottom */
   --white: #F5F5F5;
@@ -8,17 +11,70 @@
   --text-grey: #E0E0E0;
 }
 
+/* GLOBAL */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   background: linear-gradient(
     180deg,
-    var(--dark-grey-black) 0%,
-    var(--dark-grey-black) 40%,  /* Extend near-black past logo */
-    var(--deep-purple) 65%,      /* Transition zone */
-    var(--violet) 100%           /* Ends in vibrant purple */
+    var(--dark-grey-black) 0vh,
+    var(--dark-grey-black) 60vh,  /* Ensures top dark section covers hero + logo */
+    var(--deep-purple) 80vh,
+    var(--violet) 100vh
   );
   color: var(--text-grey);
   text-align: center;
+}
+
+/* HERO */
+.hero {
+  padding: 60px 20px;
+}
+.logo {
+  width: clamp(150px, 25vw, 250px); /* Responsive sizing */
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* TITLES */
+.title {
+  font-size: 2.5rem;
+  color: var(--white);
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.tagline {
+  font-size: 1.2rem;
+  color: var(--violet);
+  font-weight: 400;
+}
+
+/* ABOUT */
+.about {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* CONTACT */
+.contact {
+  padding: 30px 20px;
+}
+.contact a {
+  color: var(--emerald);
+  text-decoration: none;
+}
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+  padding: 20px;
+  font-size: 0.8rem;
+  color: var(--text-grey);
 }
