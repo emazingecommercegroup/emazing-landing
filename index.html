@@ -172,4 +172,86 @@
       </div>
     </section>
 
-    <s
+    <section id="about" class="section section--tint">
+      <div class="container">
+        <h2 class="h2">About</h2>
+        <p class="max-60">
+          We’re a boutique, woman-owned consultancy built by operators. We partner directly with founders and lean teams to design strategies that fit reality—and then we help you run them.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="h2">Let’s talk</h2>
+        <p class="max-60">Tell us where you’re stuck. We’ll suggest a path and a starting scope.</p>
+
+        <div class="contact-cta">
+          <a class="btn btn--primary" id="emailLink" href="mailto:Jennifer@emazingcommercegroup.com?subject=Project%20Inquiry%20from%20Website">Email Jennifer@emazingcommercegroup.com</a>
+          <a class="btn btn--ghost" href="https://cal.com/your-handle/intro" target="_blank" rel="noopener">Book a 20-min intro</a>
+        </div>
+
+        <!-- Optional lightweight form (Formspree/Netlify if desired) -->
+        <!--
+        <form class="contact-form" action="https://formspree.io/f/your-id" method="POST">
+          <label>Name <input name="name" autocomplete="name" required></label>
+          <label>Work Email <input name="email" type="email" autocomplete="email" required></label>
+          <label>Message <textarea name="message" rows="4" required></textarea></label>
+          <button class="btn btn--primary" type="submit">Send</button>
+        </form>
+        -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="foot-left">
+        <span>© <span id="year"></span> E-MAZING Commerce Group</span>
+        <span class="dot">•</span>
+        <span>Woman-owned</span>
+      </div>
+      <div class="foot-right">
+        <a href="https://www.linkedin.com/company/emazing-commerce-group" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:Jennifer@emazingcommercegroup.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Minimal JS: nav toggle, year, animations, and GA4 email event hook -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('primary-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+    });
+
+    // Respect reduced motion
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => e.isIntersecting && e.target.classList.add('reveal--in'));
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.card, .metric, .h2, .lead, .cta').forEach(el => {
+        el.classList.add('reveal');
+        io.observe(el);
+      });
+    }
+
+    // GA4 email click (uncomment after adding gtag)
+    // document.getElementById('emailLink').addEventListener('click', () => {
+    //   if (window.gtag) gtag('event', 'email_click', { method: 'mailto', location: 'contact_section', to: 'Jennifer@emazingcommercegroup.com' });
+    // });
+
+    // GA4 base (paste your measurement ID)
+    // window.dataLayer = window.dataLayer || [];
+    // function gtag(){dataLayer.push(arguments);}
+    // gtag('js', new Date());
+    // gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</body>
+</html>
