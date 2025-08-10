@@ -15,7 +15,7 @@
 
   <link rel="icon" href="/assets/favicon.png" />
   <link rel="preload" href="/assets/logo-full.png" as="image" />
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body class="dark">
   <!-- Header -->
@@ -321,7 +321,7 @@
     function showScheduler(e){
       e.preventDefault();
       const wrap = document.getElementById('scheduler');
-      const iframe = document.getElementById('calFrame');
+      the iframe = document.getElementById('calFrame');
       if (!iframe.src) iframe.src = CAL_URL; // lazy-load once
       wrap.hidden = false;
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
