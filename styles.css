@@ -1,36 +1,39 @@
 
 /* ========================================================
-   E-MAZING Commerce Group – styles.css (Colorboard v1.3 – Orange Primary)
+   E-MAZING Commerce Group – styles.css (Colorboard v1.5 – Balanced)
    Date: 2025-08-10
-   Change: Make the site orange-forward. Brand primary is now a deep burnt orange.
-   Tip: Update <meta name="theme-color" content="#8f3f29"> in your HTML for mobile UI tint.
+   Goal: Keep the brand orange visible, but restore a plum base so it’s not overwhelming.
+   Tweaks:
+   - Body returns to plum with a subtle orange wash
+   - Hero uses a restrained orange sweep
+   - Section tints warm, not saturated
+   - Solid-color fallbacks for fast paint
    ======================================================== */
 
 :root{
-  /* Core anchors (updated primary to deep burnt orange) */
-  --brand-primary: #8F3F29;   /* Deep burnt orange (AA contrast with paper/white) */
+  /* Base anchors (plum as base again) */
+  --brand-primary: #3E2439;   /* Plum */
   --brand-accent:  #D2941F;   /* Gold */
   --brand-paper:   #EEE2CF;   /* Paper */
   --brand-hot:     #FF4FB7;   /* Hot pink */
 
-  /* Board palette */
-  --primary-700:   #3E2439;   /* deep plum */
+  /* Orange scale (for accents & blends) */
+  --orange-900: #7A2F1F;
+  --orange-800: #8F3F29;
+  --orange-700: #B56137;
+  --orange-500: #D88D66;
+  --orange-300: #F5CB61;
+
+  /* Supporting palette */
   --primary-300:   #946676;   /* mauve */
-
-  --accent-700:    #B56137;   /* burnt orange */
-  --accent-300:    #D88D66;   /* peach */
-
   --support-700:   #0F3E2D;   /* deep teal */
   --support-300:   #B4D8CB;   /* mint */
-
-  --highlight-700: #D99F0D;   /* mustard */
-  --highlight-300: #F5CB61;   /* soft yellow */
-
   --neutral-700:   #625B4B;   /* warm gray */
   --neutral-300:   #BBAC99;   /* beige */
-
   --hot-700:       #DE006F;   /* magenta */
   --hot-300:       #F8B6D7;   /* blush */
+  --highlight-700: #D99F0D;   /* mustard */
+  --highlight-300: #F5CB61;   /* soft yellow */
 
   /* Text + surfaces */
   --ink-on-light:  #2A2420;
@@ -51,10 +54,18 @@ body{
   font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
   line-height:1.6;
   color: var(--brand-paper);
-  /* Orange-forward depth with readable contrast */
+
+  /* Fallback solid */
+  background-color: #2b1832; /* deep plum */
+
+  /* Plum base with a subtle orange wash */
   background:
-    radial-gradient(1200px 800px at 10% -10%, color-mix(in srgb, var(--brand-primary) 80%, #000) 0%, var(--brand-primary) 48%),
-    radial-gradient(1200px 800px at 110% 10%, color-mix(in srgb, var(--accent-700) 75%, #000) 0%, var(--brand-primary) 52%);
+    radial-gradient(1200px 800px at 10% -10%,
+      color-mix(in srgb, var(--brand-primary) 82%, #000) 0%,
+      var(--brand-primary) 54%),
+    radial-gradient(1200px 800px at 110% 10%,
+      color-mix(in srgb, var(--orange-700) 22%, var(--brand-primary)) 0%,
+      var(--brand-primary) 60%);
   background-attachment: fixed;
 }
 
@@ -103,7 +114,17 @@ a:hover{ color: var(--highlight-300); }
 /* ===== Hero ===== */
 .hero{
   padding: clamp(64px, 8vw, 120px) 0;
-  background: linear-gradient(135deg, var(--brand-primary) 0%, color-mix(in srgb, var(--accent-700) 70%, #000) 55%, var(--primary-700) 100%);
+
+  /* Fallback solid */
+  background-color: color-mix(in srgb, var(--brand-primary) 70%, var(--orange-700) 30%);
+
+  /* Balanced sweep: mostly plum with orange highlights */
+  background:
+    linear-gradient(135deg,
+      var(--brand-primary) 0%,
+      color-mix(in srgb, var(--orange-700) 35%, var(--brand-primary)) 52%,
+      color-mix(in srgb, var(--orange-500) 22%, var(--brand-primary)) 100%);
+
   border-bottom:1px solid var(--border);
   color: var(--brand-paper);
 }
@@ -154,11 +175,14 @@ a:hover{ color: var(--highlight-300); }
 .section{ padding: clamp(48px, 6vw, 96px) 0; }
 .section--light{ background: var(--brand-paper); color: var(--neutral-700); }
 .section--dark{ background: var(--brand-primary); color: var(--brand-paper); }
-/* Tint now leans orange, with subtle plum shading for depth */
+
+/* Warm, not saturated */
 .section--tint{
+  /* Fallback */
+  background-color: color-mix(in srgb, var(--brand-primary) 86%, var(--orange-700) 14%);
   background:
     linear-gradient(180deg,
-      color-mix(in srgb, var(--brand-primary) 85%, var(--primary-700) 15%),
+      color-mix(in srgb, var(--brand-primary) 90%, var(--orange-700) 10%),
       var(--brand-primary));
   color: var(--brand-paper);
 }
@@ -211,7 +235,7 @@ a:hover{ color: var(--highlight-300); }
   color:var(--brand-paper);
   padding:12px 14px; border-radius:12px;
 }
-.input::placeholder, textarea::placeholder{ color:#f0e4d6aa; }
+.input::placeholder, textarea::placeholder{ color:#cdbfafaa; }
 
 /* ===== Animations: reveal ===== */
 .reveal{ opacity:0; transform: translateY(10px); transition: opacity .4s ease, transform .4s ease; }
@@ -234,7 +258,7 @@ a:hover{ color: var(--highlight-300); }
   --ink-on-dark:#1E0930;
   --ink-on-light:#2A2420;
 
-  /* In light mode, use Paper as the base surface */
+  /* Light keeps paper base; orange accents come from the scale above */
   --brand-primary:#EEE2CF;   /* becomes base */
   --brand-paper:#1E0930;     /* text color on light */
 
