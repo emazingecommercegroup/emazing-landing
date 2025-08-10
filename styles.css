@@ -1,248 +1,97 @@
-/* ===========================
-   E-MAZING — Core Theme Tokens
-   Main:   #1e0930 (deep plum)
-   Accent: #d2941f (gold)
-   Light:  #eee2cf (warm white)
-   Complements (±180°):
-     main → #1b3009 (olive)
-     accent → #1f5dd2 (royal blue)
-   =========================== */
+/* E‑MAZING — Single Theme Palette */
+:root{
+  --primary:#210C32;         /* deep brand purple */
+  --secondary:#CA8617;       /* gold/amber accent */
+  --bg:#E3D7C5;              /* warm background */
+  --text:#1A1325;            /* primary text (dark on warm bg) */
+  --muted:#4A3F54;           /* subdued text */
+  --card:#F1E8DA;            /* card surface on warm bg */
+  --border:#CDBDA6;          /* soft border */
 
-:root {
-  /* Brand — HEX */
-  --brand: #1e0930;
-  --brand-compl: #1b3009;
-  --accent: #d2941f;
-  --accent-compl: #1f5dd2;
-  --light: #eee2cf;
+  /* Split‑complement accents (adjust later if desired) */
+  --accent-a:#86CA17;        /* lime‑green (split) */
+  --accent-b:#17CA86;        /* teal‑green (split) */
 
-  /* Brand — HSL (for translucency/derivatives) */
-  --brand-h: 272;
-  --brand-s: 68%;
-  --brand-l: 11%;
-  --accent-h: 39;
-  --accent-s: 74%;
-  --accent-l: 47%;
-
-  /* Derived tokens */
-  --bg: var(--brand);
-  --text: var(--light);
-  --muted-text: #e6e0d7;
-
-  /* Surfaces & borders (from brand) */
-  --surface-1: #4e177d;  /* card bg */
-  --surface-2: #591b8e;  /* panels / alt rows */
-  --border: #7c25c6;
-
-  /* Action states */
-  --brand-hover: #2e0e4a;
-  --brand-active: #0e0416;
-  --accent-hover: #ae7b1a;
-  --accent-active: #8b6215;
-
-  /* Focus ring & selection use the accent complement (high contrast) */
-  --focus: var(--accent-compl);
-
-  /* Shadows */
-  --shadow-1: 0 6px 20px rgba(0,0,0,.35);
-  --shadow-2: 0 12px 30px rgba(0,0,0,.45);
+  --radius:16px;
+  --shadow:0 8px 24px rgba(26,19,37,.15);
 }
 
-/* ========== Base ========== */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;scroll-behavior:smooth;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
 
-html, body {
-  height: 100%;
-}
+.container{width:min(1100px,92%);margin-inline:auto}
+.section{padding:64px 0}
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* Header / Nav */
+.site-header{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:18px 0;position:sticky;top:0;background:rgba(227,215,197,.7);backdrop-filter:saturate(140%) blur(6px);z-index:10;border-bottom:1px solid var(--border)}
+.logo{height:40px;width:auto}
+.nav-toggle{display:none}
+.nav-list{display:flex;gap:20px;list-style:none;margin:0;padding:0}
+.nav-list a{opacity:.9}
+.nav-list a:hover,.nav-list a:focus{opacity:1}
+.nav-list .cta{padding:.5rem .9rem;border:1px solid var(--border);border-radius:999px}
 
-::selection {
-  background: color-mix(in oklab, var(--focus) 40%, white);
-  color: #0a0a0a;
-}
+/* Hero */
+.hero{padding:96px 0 72px}
+.hero h1{font-size:clamp(36px,5vw,56px);line-height:1.05;margin:0 0 8px;color:var(--primary)}
+.hero .sub{font-size:clamp(18px,2.2vw,22px);opacity:.9;margin:0 0 8px}
+.hero .tagline{opacity:.8;margin:0 0 18px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
 
-/* ========== Layout helpers ========== */
+/* Buttons */
+.button{display:inline-block;padding:.85rem 1.1rem;border-radius:12px;border:1px solid var(--border);transition:.2s;background:#fff;color:var(--text)}
+.button:hover{transform:translateY(-1px)}
+.button.primary{background:linear-gradient(135deg,var(--secondary),var(--accent-b));color:#1A1325;border:0}
+.button.ghost{background:transparent}
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 24px;
-}
+/* Utilities */
+.pull{margin:18px 0;padding:18px;border-left:3px solid var(--primary);opacity:.95}
 
-.card {
-  background: var(--surface-1);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  box-shadow: var(--shadow-1);
-  padding: 20px;
-}
+/* Manifesto */
+.manifesto{margin:22px 0;padding:20px;border:1px solid var(--border);border-radius:18px;background:linear-gradient(135deg, rgba(202,134,23,.12), rgba(23,202,134,.08))} /* gold -> teal wash */
+.manifesto footer{margin-top:10px;opacity:.85;font-style:italic}
 
-.panel {
-  background: var(--surface-2);
-  border: 1px solid color-mix(in oklab, var(--border) 60%, black);
-  border-radius: 14px;
-  padding: 16px;
-}
+/* Cards & Grids */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.card h3{margin-top:0;color:var(--primary)}
 
-/* ========== Text & Links ========== */
+.table-wrap{overflow:auto;margin-top:16px}
+table{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
+thead th{background:var(--primary);text-align:left;padding:12px;color:#fff}
+tbody td, thead th{border-bottom:1px solid var(--border);padding:12px}
 
-h1, h2, h3 {
-  color: var(--light);
-  letter-spacing: 0.2px;
-}
+/* Funnel */
+.funnel{margin-top:22px}
+.funnel ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;list-style:decimal inside}
+.funnel li{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px}
+.funnel .hint{opacity:.85;margin-top:10px}
 
-p.muted, .muted {
-  color: var(--muted-text);
-}
+/* Services grid */
+.lede{font-weight:600;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;padding:0;list-style:none}
+.service{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.center{text-align:center}
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-a:hover { color: var(--accent-hover); }
-a:active { color: var(--accent-active); }
-a:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-  border-radius: 4px;
-}
+/* Word bank */
+.pill-list{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0}
+.pill-list li{border:1px solid var(--border);padding:.5rem .8rem;border-radius:999px;background:#fff}
+.sig{margin-top:14px;opacity:.9;color:var(--muted)}
 
-/* ========== Buttons ========== */
+/* Contact & Scheduler */
+.contact{background:linear-gradient(135deg, rgba(202,134,23,.12), rgba(23,202,134,.08));border-radius:20px}
+.contact-actions{display:flex;gap:12px;margin:12px 0 0;flex-wrap:wrap}
+.scheduler{margin-top:16px;border-radius:16px;overflow:hidden}
+.scheduler iframe{display:block;width:100%;height:740px;border:1px solid var(--border);background:#fff}
 
-.btn {
-  --btn-bg: var(--accent);
-  --btn-fg: var(--brand); /* AA contrast on gold */
-  background: var(--btn-bg);
-  color: var(--btn-fg);
-  border: 1px solid color-mix(in oklab, var(--btn-bg) 70%, black);
-  border-radius: 14px;
-  padding: 12px 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background .15s ease, transform .06s ease, box-shadow .15s ease;
-  box-shadow: var(--shadow-1);
-}
-.btn:hover { background: var(--accent-hover); }
-.btn:active {
-  background: var(--accent-active);
-  transform: translateY(1px);
-  box-shadow: var(--shadow-2);
-}
-.btn:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 3px;
-}
+/* Footer */
+.site-footer{padding:40px 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--border);margin-top:32px}
 
-/* Inverse button (brand background) */
-.btn--brand {
-  --btn-bg: var(--brand);
-  --btn-fg: var(--light);
-  background: var(--brand);
-  color: var(--light);
-  border: 1px solid var(--border);
-}
-.btn--brand:hover { background: var(--brand-hover); }
-.btn--brand:active { background: var(--brand-active); }
-
-/* Subtle / ghost */
-.btn--ghost {
-  --btn-fg: var(--accent);
-  background: transparent;
-  color: var(--accent);
-  border: 1px solid color-mix(in oklab, var(--accent) 35%, transparent);
-}
-.btn--ghost:hover {
-  background: color-mix(in oklab, var(--accent) 12%, transparent);
-}
-
-/* ========== Forms ========== */
-
-input, select, textarea {
-  background: color-mix(in oklab, var(--brand) 70%, black);
-  color: var(--light);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 10px 12px;
-}
-input::placeholder, textarea::placeholder { color: color-mix(in oklab, var(--light) 60%, transparent); }
-
-input:focus-visible, select:focus-visible, textarea:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-}
-
-/* ========== Alerts (using complementary hues for contrast) ========== */
-
-.alert {
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1px solid transparent;
-}
-
-.alert--info {
-  background: color-mix(in oklab, var(--accent-compl) 16%, var(--brand));
-  border-color: color-mix(in oklab, var(--accent-compl) 50%, var(--brand));
-}
-
-.alert--success {
-  /* lightened complement of main */
-  background: #70c6251f; /* translucent green */
-  border-color: #70c625;
-  color: var(--light);
-}
-
-.alert--warning {
-  background: color-mix(in oklab, var(--accent) 16%, var(--brand));
-  border-color: color-mix(in oklab, var(--accent) 55%, var(--brand));
-  color: var(--light);
-}
-
-/* ========== Nav / Header ========== */
-
-.header {
-  background: linear-gradient(135deg, var(--brand) 0%, #2e0e4a 45%, #4e177d 100%);
-  border-bottom: 1px solid var(--border);
-  padding: 18px 0;
-}
-
-/* ========== Footer ========== */
-
-.footer {
-  border-top: 1px solid var(--border);
-  color: var(--muted-text);
-  padding: 24px 0;
-}
-
-/* ========== Utility ========== */
-
-.bg-brand { background: var(--brand); }
-.bg-surface { background: var(--surface-1); }
-.text-accent { color: var(--accent); }
-.text-light { color: var(--light); }
-.border-brand { border-color: var(--border); }
-
-.badge {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-weight: 600;
-  background: color-mix(in oklab, var(--accent) 20%, var(--brand));
-  border: 1px solid color-mix(in oklab, var(--accent) 55%, var(--brand));
-  color: var(--light);
-}
-
-/* Optional: light theme override (if you use a toggle) */
-.light-theme {
-  --bg: #fffdfa;
-  --text: #1e0930;
-  --surface-1: #fff7ea;
-  --surface-2: #fff2d7;
-  --border: #e4d3b2;
+/* Mobile Nav */
+@media (max-width: 840px){
+  .nav-toggle{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:10px;background:transparent;padding:.4rem .6rem}
+  .nav-list{position:absolute;right:4%;top:64px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:10px;flex-direction:column;display:none;min-width:220px}
+  .nav-list.open{display:flex}
 }
