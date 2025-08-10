@@ -18,8 +18,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css?v=2025-08-10-5" />
+  <!-- Styles (cache-busted) -->
+  <link rel="stylesheet" href="styles.css?v=2025-08-10-uf-7" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
@@ -50,7 +50,7 @@
   }
   </script>
 </head>
-<body>
+<body data-build="uf-accordion-2025-08-10-7">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -71,7 +71,7 @@
 
       <nav id="primary-nav" class="nav" aria-label="Primary">
         <ul>
-          <!-- Reordered nav -->
+          <!-- Order: About → Services → 5E → Unicorn Funnel → Jennifer -->
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#five-e">5E Framework</a></li>
@@ -248,7 +248,6 @@
             max-height: 0;
             transition: max-height .28s ease;
           }
-          #unicorn-funnel .expander.open { /* max-height set dynamically via JS for smoothness */ }
           #unicorn-funnel .expander ul { margin: 8px 0 0 0; padding-left: 18px; }
           #unicorn-funnel .expander li { margin: 4px 0; }
         </style>
@@ -338,21 +337,16 @@
               </circle>
             </g>
 
-            <!-- Leader lines + stage dots (approx positions from base->tip) -->
+            <!-- Leader lines + stage dots -->
             <g stroke="rgba(255,255,255,.35)" stroke-width="1.5" fill="none">
-              <!-- Attract -->
               <line x1="260" y1="400" x2="690" y2="400" />
               <circle cx="260" cy="400" r="4" fill="var(--horn-pink)" />
-              <!-- Engage -->
               <line x1="360" y1="340" x2="690" y2="340" />
               <circle cx="360" cy="340" r="4" fill="var(--horn-gold)" />
-              <!-- Nurture -->
               <line x1="460" y1="285" x2="690" y2="285" />
               <circle cx="460" cy="285" r="4" fill="var(--horn-paper)" />
-              <!-- Convert -->
               <line x1="540" y1="230" x2="690" y2="230" />
               <circle cx="540" cy="230" r="4" fill="var(--horn-pink)" />
-              <!-- Grow -->
               <line x1="585" y1="180" x2="690" y2="180" />
               <circle cx="585" cy="180" r="4" fill="var(--horn-gold)" />
             </g>
@@ -594,8 +588,8 @@
 
       function closeAll() {
         expanders.forEach(exp => {
-          exp.classList.remove('open');
           exp.style.maxHeight = 0;
+          exp.classList.remove('open');
         });
         rows.forEach(r => r.setAttribute('aria-expanded', 'false'));
       }
@@ -615,18 +609,13 @@
           closeAll();
           row.setAttribute('aria-expanded', 'true');
           expander.classList.add('open');
-          // Set to scrollHeight for smooth expansion
           expander.style.maxHeight = expander.scrollHeight + 'px';
-          // Ensure keyboard focus can move into content
-          const firstLink = expander.querySelector('a, button, [href], [tabindex]:not([tabindex="-1"])');
-          if (firstLink) firstLink.tabIndex = 0;
         }
       }
 
       rows.forEach(row => {
         row.addEventListener('click', () => toggleRow(row));
         row.addEventListener('keydown', (e) => {
-          // Activate on Enter or Space
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             toggleRow(row);
