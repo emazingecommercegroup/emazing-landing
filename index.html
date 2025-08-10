@@ -53,7 +53,7 @@
       <div class="hero-actions">
         <a href="#contact" class="button primary">Start a Project</a>
         <a href="#method" class="button ghost">Our Framework</a>
-        <a href="#" id="calendlyHero" class="button primary">Schedule Now</a>
+        <a href="https://cal.com/e-mazingcommercegroup" id="calendlyHero" class="button primary">Schedule Now</a>
       </div>
     </section>
 
@@ -260,12 +260,29 @@
 
       <div class="contact-actions">
         <a class="button primary" href="mailto:Jennifer@emazingcommercegroup.com">Email Jennifer</a>
-        <a class="button" href="#" id="calendlyLink" aria-label="Book via Calendly">Schedule on Calendly</a>
+        <a class="button" href="https://cal.com/e-mazingcommercegroup" id="calBtn" aria-label="Book via Cal.com">
+          Schedule on Cal.com
+        </a>
       </div>
 
-      <!-- Inline scheduler (revealed on click) -->
-      <div class="calendly-inline-widget" data-url="http://cal.com/e-mazingcommercegroup" style="display:none; min-width:320px; height:740px;"></div>
-      <noscript>Please enable JavaScript to book meetings.</noscript>
+      <!-- Inline Cal.com scheduler (hidden until clicked) -->
+      <div id="scheduler" class="scheduler" hidden>
+        <iframe
+          id="calFrame"
+          title="Schedule with E‑MAZING on Cal.com"
+          src=""               <!-- lazy-loaded by JS -->
+          width="100%"
+          height="740"
+          frameborder="0"
+          allow="camera; microphone; fullscreen; clipboard-read; clipboard-write"
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+
+      <noscript>
+        Scheduling requires JavaScript. Open directly at
+        <a href="https://cal.com/e-mazingcommercegroup">cal.com/e-mazingcommercegroup</a>.
+      </noscript>
     </section>
   </main>
 
@@ -275,7 +292,7 @@
 
   <script>
     // ===== Config =====
-    const CALENDLY_URL = "http://cal.com/e-mazingcommercegroup";
+    const CAL_URL = "https://cal.com/e-mazingcommercegroup"; // add ?layout=week to default to weekly
 
     // Mobile nav
     const navBtn = document.querySelector('.nav-toggle');
@@ -300,28 +317,27 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Calendly hookup (both buttons → inline reveal)
-    const calendlyEmbed = document.querySelector('.calendly-inline-widget');
-    const calendlyBtn = document.getElementById('calendlyLink');
-    const calendlyHero = document.getElementById('calendlyHero');
-
-    function showCalendly(e){
+    // Cal.com: reveal inline iframe from both buttons
+    function showScheduler(e){
       e.preventDefault();
-      // set hrefs for accessibility + fallback
-      calendlyBtn.setAttribute('href', CALENDLY_URL);
-      calendlyHero.setAttribute('href', CALENDLY_URL);
-      // reveal embed
-      if (calendlyEmbed) {
-        calendlyEmbed.style.display = 'block';
-        window.scrollTo({ top: calendlyEmbed.offsetTop - 80, behavior: 'smooth' });
-      } else {
-        // fallback: open in new tab
-        window.open(CALENDLY_URL, '_blank');
-      }
+      const wrap = document.getElementById('scheduler');
+      const iframe = document.getElementById('calFrame');
+      if (!iframe.src) iframe.src = CAL_URL; // lazy-load once
+      wrap.hidden = false;
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    if (calendlyBtn) calendlyBtn.addEventListener('click', showCalendly);
-    if (calendlyHero) calendlyHero.addEventListener('click', showCalendly);
+    const calBtn = document.getElementById('calBtn');
+    if (calBtn){
+      calBtn.setAttribute('href', CAL_URL); // fallback if JS off
+      calBtn.addEventListener('click', showScheduler);
+    }
+
+    const calHero = document.getElementById('calendlyHero');
+    if (calHero){
+      calHero.setAttribute('href', CAL_URL);
+      calHero.addEventListener('click', showScheduler);
+    }
   </script>
 </body>
 </html>
