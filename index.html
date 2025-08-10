@@ -15,9 +15,9 @@
 
   <link rel="icon" href="/assets/favicon.png" />
   <link rel="preload" href="/assets/logo-full.png" as="image" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
-<body class="dark">
+<body>
   <!-- Header -->
   <header class="site-header container">
     <a class="brand" href="#home" aria-label="E‑MAZING Commerce Group">
@@ -36,12 +36,6 @@
         <li><a href="#contact" class="cta">Book a Call</a></li>
       </ul>
     </nav>
-
-    <!-- Theme toggle -->
-    <label class="toggle" title="Toggle theme">
-      <input id="themeToggle" type="checkbox" aria-label="Toggle dark mode" checked />
-      <span>Dark</span>
-    </label>
   </header>
 
   <main id="home">
@@ -53,7 +47,7 @@
       <div class="hero-actions">
         <a href="#contact" class="button primary">Start a Project</a>
         <a href="#method" class="button ghost">Our Framework</a>
-        <a href="https://cal.com/e-mazingcommercegroup" id="calendlyHero" class="button primary">Schedule Now</a>
+        <a href="https://cal.com/e-mazingcommercegroup?layout=week" id="calHero" class="button primary">Schedule Now</a>
       </div>
     </section>
 
@@ -61,10 +55,14 @@
     <section id="about" class="section container">
       <h2>About E‑MAZING</h2>
       <p>
-        Jennifer Angelus is an accomplished CPG and eCommerce <strong>unicorn</strong> who has shaped
-        omnichannel strategy through strategic digital marketing, content creation, and trade activation.
-        Recognized for dynamic leadership, a team‑driven growth mindset, and the ability to combine
-        data insights with digital transformation, Jennifer turns <strong>commercialization into conversion</strong>.
+        Jennifer Angelus is the founder of E‑MAZING Commerce Group and a recognized voice on the digital shelf.
+        She has led omnichannel transformation efforts for household CPG brands and is frequently invited to share
+        practical playbooks for bridging in‑store and online execution.
+      </p>
+      <p>
+        She has been featured by the <strong>Digital Shelf Institute</strong> on “How to Drive Omnichannel Growth by Understanding Each Commerce Touch Point,”
+        appeared at <strong>IDFA’s Dairy Forum 2024</strong> on a connected‑commerce panel, and joined the
+        <strong>Beyond The Shelf</strong> podcast to discuss capability building and team leadership.
       </p>
 
       <!-- Brand Manifesto -->
@@ -78,12 +76,6 @@
         </p>
         <footer>“Lead with courage. Build with purpose. Inspire without limits.”</footer>
       </blockquote>
-
-      <div class="color-key" role="note" aria-label="Brand colors meaning">
-        <span class="chip gold">Gold = Abundance</span>
-        <span class="chip white">White = Integrity</span>
-        <span class="chip purple">Purple = Magic</span>
-      </div>
 
       <blockquote class="pull">Unrivaled. Inspired. Redefined.</blockquote>
     </section>
@@ -260,7 +252,7 @@
 
       <div class="contact-actions">
         <a class="button primary" href="mailto:Jennifer@emazingcommercegroup.com">Email Jennifer</a>
-        <a class="button" href="https://cal.com/e-mazingcommercegroup" id="calBtn" aria-label="Book via Cal.com">
+        <a class="button" href="https://cal.com/e-mazingcommercegroup?layout=week" id="calBtn" aria-label="Book via Cal.com">
           Schedule on Cal.com
         </a>
       </div>
@@ -281,7 +273,7 @@
 
       <noscript>
         Scheduling requires JavaScript. Open directly at
-        <a href="https://cal.com/e-mazingcommercegroup">cal.com/e-mazingcommercegroup</a>.
+        <a href="https://cal.com/e-mazingcommercegroup?layout=week">cal.com/e-mazingcommercegroup</a>.
       </noscript>
     </section>
   </main>
@@ -291,8 +283,8 @@
   </footer>
 
   <script>
-    // ===== Config =====
-    const CAL_URL = "https://cal.com/e-mazingcommercegroup"; // add ?layout=week to default to weekly
+    // Config
+    const CAL_URL = "https://cal.com/e-mazingcommercegroup?layout=week";
 
     // Mobile nav
     const navBtn = document.querySelector('.nav-toggle');
@@ -303,17 +295,6 @@
       menu.classList.toggle('open');
     });
 
-    // Theme toggle (dark by default)
-    const toggle = document.getElementById('themeToggle');
-    const stored = localStorage.getItem('theme');
-    if (stored) document.body.className = stored;
-    toggle.checked = document.body.classList.contains('dark');
-    toggle.addEventListener('change', () => {
-      document.body.classList.toggle('dark');
-      document.body.classList.toggle('light');
-      localStorage.setItem('theme', document.body.className);
-    });
-
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -321,7 +302,7 @@
     function showScheduler(e){
       e.preventDefault();
       const wrap = document.getElementById('scheduler');
-      the iframe = document.getElementById('calFrame');
+      const iframe = document.getElementById('calFrame');
       if (!iframe.src) iframe.src = CAL_URL; // lazy-load once
       wrap.hidden = false;
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -333,7 +314,7 @@
       calBtn.addEventListener('click', showScheduler);
     }
 
-    const calHero = document.getElementById('calendlyHero');
+    const calHero = document.getElementById('calHero');
     if (calHero){
       calHero.setAttribute('href', CAL_URL);
       calHero.addEventListener('click', showScheduler);
