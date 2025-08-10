@@ -4,8 +4,8 @@
   --bg-2:#10141c;
   --text:#e9eef9;
   --muted:#b9c3d9;
-  --brand:#b388ff;      /* iridescent-lilac */
-  --accent:#36d1dc;     /* subtle teal pop */
+  --brand:#b388ff;      /* iridescent lilac */
+  --accent:#36d1dc;     /* subtle teal */
   --card:#121826;
   --border:#232a3a;
 
@@ -14,9 +14,6 @@
   --muted-light:#4a5568;
   --card-light:#ffffff;
   --border-light:#e6e8ee;
-
-  --gold:#d8b64c;
-  --purple:#9b6dff;
 
   --radius:16px;
   --shadow:0 8px 25px rgba(0,0,0,.25);
@@ -35,7 +32,7 @@ img{max-width:100%;height:auto;display:block}
 .container{width:min(1100px, 92%);margin-inline:auto}
 .section{padding:64px 0}
 .site-header{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:18px 0;position:sticky;top:0;background:transparent;backdrop-filter:saturate(140%) blur(6px);z-index:10}
-.logo{height:40px; width:auto}
+.logo{height:40px;width:auto}
 
 .nav-toggle{display:none}
 .nav-list{display:flex;gap:20px;list-style:none;margin:0;padding:0}
@@ -96,6 +93,11 @@ body.light .service{background:var(--card-light);border-color:var(--border-light
 .sig{margin-top:14px;opacity:.9}
 
 .wordbanks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+
+/* Inline scheduler */
+.scheduler{margin-top:16px;border-radius:16px;overflow:hidden}
+.scheduler iframe{display:block;width:100%;height:740px;border:1px solid var(--border)}
+body.light .scheduler iframe{border-color:var(--border-light)}
 
 .contact{background:linear-gradient(135deg, rgba(179,136,255,.08), rgba(54,209,220,.08));border-radius:20px}
 .contact-actions{display:flex;gap:12px;margin:12px 0 0;flex-wrap:wrap}
