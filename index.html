@@ -6,7 +6,7 @@
   <title>E-MAZING Commerce Group | Digital Redefined</title>
   <meta name="description" content="E-MAZING Commerce Group helps CPG brands redefine their digital presence using a practical, data-driven 5E framework: Experience, Equity, Energy, Engagement, Everywhere." />
   <link rel="canonical" href="https://e-mazingcommercegroup.com/" />
-  <meta name="theme-color" content="#1e0930" />
+  <meta name="theme-color" content="#8f3f29" />
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css?v=2025-08-10" />
+  <link rel="stylesheet" href="styles.css?v=2025-08-10-4" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
@@ -289,21 +289,24 @@
       });
     }
 
-    // ===== Theme toggle (remembers choice) =====
+    // ===== Theme toggle (remembers choice)
     const root = document.documentElement;
     const themeBtn = document.getElementById('themeToggle');
 
     function preferredTheme() {
+      // 1) honor saved choice; 2) honor HTML data-theme if present; 3) fall back to system
       const saved = localStorage.getItem('theme');
       if (saved) return saved;
+      const preset = root.getAttribute('data-theme');
+      if (preset) return preset;
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
     function applyTheme(t) {
       root.setAttribute('data-theme', t);
-      // aria-pressed = true when LIGHT mode is active
       if (themeBtn) themeBtn.setAttribute('aria-pressed', String(t === 'light'));
       localStorage.setItem('theme', t);
     }
+    // Apply without overriding your default "dark" unless the user had a saved choice
     applyTheme(preferredTheme());
 
     if (themeBtn) {
