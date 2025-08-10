@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>E-MAZING Commerce Group | Digital Redefined</title>
   <meta name="description" content="E-MAZING Commerce Group helps CPG brands redefine their digital presence using a practical, data-driven 5E framework: Experience, Equity, Energy, Engagement, Everywhere." />
-  <link rel="canonical" href="https://www.emazingcommercegroup.com/" />
+  <link rel="canonical" href="https://e-mazingcommercegroup.com/" />
   <meta name="theme-color" content="#1e0930" />
 
   <!-- Favicons -->
@@ -19,18 +19,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2025-08-10" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="E-MAZING Commerce Group | Digital Redefined">
   <meta property="og:description" content="Boutique consulting for digital shelf, commercialization, and growth. We bring the 5Ps to life in our 5E model.">
-  <meta property="og:image" content="https://www.emazingcommercegroup.com/assets/og-preview.png">
-  <meta property="og:url" content="https://www.emazingcommercegroup.com/">
+  <meta property="og:image" content="https://e-mazingcommercegroup.com/assets/og-preview.png">
+  <meta property="og:url" content="https://e-mazingcommercegroup.com/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="E-MAZING Commerce Group | Digital Redefined">
   <meta name="twitter:description" content="Boutique consulting for digital shelf, commercialization, and growth.">
-  <meta name="twitter:image" content="https://www.emazingcommercegroup.com/assets/og-preview.png">
+  <meta name="twitter:image" content="https://e-mazingcommercegroup.com/assets/og-preview.png">
 
   <!-- Preload small logo (optional) -->
   <link rel="preload" href="assets/logo-full.png" as="image" />
@@ -41,8 +41,8 @@
     "@context":"https://schema.org",
     "@type":"Organization",
     "name":"E-MAZING Commerce Group",
-    "url":"https://www.emazingcommercegroup.com/",
-    "logo":"https://www.emazingcommercegroup.com/assets/logo-full.png",
+    "url":"https://e-mazingcommercegroup.com/",
+    "logo":"https://e-mazingcommercegroup.com/assets/logo-full.png",
     "description":"Boutique consulting for digital shelf, commercialization, and growth.",
     "email":"Jennifer@emazingcommercegroup.com",
     "founder": "Jennifer Angelus",
@@ -145,7 +145,7 @@
             <h3>Growth & Media</h3>
             <p>Always-on retail media strategies that ladder into P&L reality.</p>
             <ul>
-              <li>Retail media planning</</li>
+              <li>Retail media planning</li>
               <li>Promo & pricing guardrails</li>
               <li>Test-and-learn design</li>
             </ul>
@@ -205,4 +205,119 @@
           </article>
 
           <article class="card">
-            <h3>Selecte
+            <h3>Selected highlights</h3>
+            <ul>
+              <li>Panelist, IDFA Dairy Forum (Digital Shelf &amp; Connected Commerce)</li>
+              <li>Speaker, Brand Innovators Marketing Innovation Summit (NYC)</li>
+              <li>Featured guest, “Beyond The Shelf” podcast</li>
+              <li>Webinar contributor, Digital Shelf Institute: How to Drive Omnichannel Growth</li>
+              <li>Quoted in Digital Shelf Summit recap on omnichannel strategy</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="h2">Let’s talk</h2>
+        <p class="max-60">Tell us where you’re stuck. We’ll suggest a path and a starting scope.</p>
+
+        <div class="contact-cta">
+          <a class="btn btn--primary" id="emailLink" href="mailto:Jennifer@emazingcommercegroup.com?subject=Project%20Inquiry%20from%20Website">Email Jennifer@emazingcommercegroup.com</a>
+
+          <!-- BOOKING -->
+          <a class="btn btn--ghost" id="bookLink" href="https://cal.com/e-mazingcommercegroup" target="_blank" rel="noopener">
+            Book a 20-min intro
+          </a>
+        </div>
+
+        <!-- No-JS fallback / reassurance -->
+        <noscript>
+          <p class="muted" style="margin-top:10px">
+            JavaScript is off. You can still
+            <a href="https://cal.com/e-mazingcommercegroup" target="_blank" rel="noopener">book a 20-min intro here</a>.
+          </p>
+        </noscript>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="foot-left">
+        <span>© <span id="year"></span> E-MAZING Commerce Group</span>
+        <span class="dot">•</span>
+        <span>Woman-owned</span>
+      </div>
+      <div class="foot-right">
+        <a href="https://www.linkedin.com/company/emazing-commerce-group" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:Jennifer@emazingcommercegroup.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Minimal JS: nav toggle, year, scroll-reveal, theme toggle, booking hook -->
+  <script>
+    // --- CONFIGURE ONCE: your real Calendly/Cal.com URL ---
+    const CAL_LINK = 'https://cal.com/e-mazingcommercegroup';
+    // -------------------------------------------------------
+
+    // Current year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Mobile nav (guard in case element is missing)
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('primary-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+    }
+
+    // Scroll-reveal (respect reduced motion)
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => e.isIntersecting && e.target.classList.add('reveal--in'));
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.card, .h2, .lead, .cta').forEach(el => {
+        el.classList.add('reveal'); io.observe(el);
+      });
+    }
+
+    // ===== Theme toggle (remembers choice) =====
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+
+    function preferredTheme() {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    function applyTheme(t) {
+      root.setAttribute('data-theme', t);
+      // aria-pressed = true when LIGHT mode is active
+      if (themeBtn) themeBtn.setAttribute('aria-pressed', String(t === 'light'));
+      localStorage.setItem('theme', t);
+    }
+    applyTheme(preferredTheme());
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') || 'dark';
+        applyTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    }
+
+    // ===== Booking link wiring =====
+    const bookLink = document.getElementById('bookLink');
+    if (bookLink && CAL_LINK) {
+      bookLink.href = CAL_LINK;
+    }
+  </script>
+</body>
+</html>
