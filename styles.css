@@ -5,6 +5,7 @@
    - Accent (gold):      #d2941f
    - Paper / light:      #eee2cf
    - Hot (pink):         #FF4FB7
+   - Complement (blue):  #1f5dd2
    ======================== */
 
 /* ---------- Dark theme (default) ---------- */
@@ -15,7 +16,7 @@
   --muted:#CBBF9F;        /* softened paper */
 
   --brand:#d2941f;        /* gold */
-  --brand-2:#6d47a9;      /* violet accent (from primary) */
+  --brand-2:#1f5dd2;      /* royal blue complement */
   --hot:#FF4FB7;          /* unicorn horn pink */
 
   --card:#140b22;         /* elevated surface */
@@ -37,13 +38,16 @@
 }
 
 /* ---------- Light theme overrides ----------
-   Requested: make colors the same as dark for now
-   (we mirror root values so the toggle doesn’t change appearance) */
+   Mirrors dark values so the toggle doesn’t change appearance (for now) */
 [data-theme="light"]{
   --bg-1:#1e0930;
   --bg-2:#0f051a;
   --text:#EEE2CF;
   --muted:#CBBF9F;
+
+  --brand:#d2941f;
+  --brand-2:#1f5dd2;
+  --hot:#FF4FB7;
 
   --card:#140b22;
   --border:#2a1e3e;
@@ -140,13 +144,13 @@ body{
   .hide-mobile{ display:none; }
 }
 
-/* Hero with eggplant / gold / pink iridescent breathing gradient */
+/* Hero with eggplant / gold / pink + BLUE complement breathing gradient */
 .hero{ position: relative; overflow: clip; isolation: isolate; }
 .hero-bg{
   position: absolute; inset: 0; z-index: -1;
   background:
     radial-gradient(1200px 600px at 20% 20%, rgba(210,148,31,.35), transparent 60%),   /* gold glow */
-    radial-gradient(1000px 500px at 80% 30%, rgba(109,71,169,.30), transparent 60%),   /* violet glow */
+    radial-gradient(1000px 500px at 80% 30%, rgba(31,93,210,.30), transparent 60%),    /* BLUE complement */
     radial-gradient(800px 400px at 50% 80%, rgba(255,79,183,.22), transparent 60%);    /* pink glow */
   filter: saturate(112%);
   animation: breathe 18s ease-in-out infinite;
@@ -219,8 +223,8 @@ body{
 .footer-inner{ display:flex; align-items:center; justify-content:space-between; gap: 12px; flex-wrap: wrap; }
 .foot-right a{ color: var(--muted); text-decoration:none; margin-left: 12px; }
 .foot-right a:hover{ color: var(--text); }
-.dot{ margin: 0 8px; color: #3a2a54; }
-[data-theme="light"] .dot{ color:#8c7aa6; }
+.dot{ margin: 0 8px; color: #173462; }
+[data-theme="light"] .dot{ color:#8fb1f5; }
 
 /* Reveal on scroll */
 .reveal{ opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
