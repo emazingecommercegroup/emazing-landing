@@ -1,13 +1,7 @@
-
 /* ========================================================
    E-MAZING Commerce Group – styles.css (Colorboard v1.5 – Balanced)
    Date: 2025-08-10
    Goal: Keep the brand orange visible, but restore a plum base so it’s not overwhelming.
-   Tweaks:
-   - Body returns to plum with a subtle orange wash
-   - Hero uses a restrained orange sweep
-   - Section tints warm, not saturated
-   - Solid-color fallbacks for fast paint
    ======================================================== */
 
 :root{
@@ -150,7 +144,6 @@ a:hover{ color: var(--highlight-300); }
 }
 .btn:active{ transform: translateY(1px) scale(.99); }
 
-/* Support both .btn-primary and .btn--primary */
 .btn-primary, .btn--primary{
   background: linear-gradient(180deg, var(--brand-accent), color-mix(in srgb, var(--brand-accent) 82%, #000));
   color:#111; box-shadow: var(--shadow);
@@ -163,7 +156,6 @@ a:hover{ color: var(--highlight-300); }
 }
 .btn-secondary:hover{ filter: brightness(1.06); }
 
-/* Support .btn-ghost and .btn--ghost */
 .btn-ghost, .btn--ghost{
   background: var(--surface-200);
   color: var(--brand-paper);
@@ -178,7 +170,6 @@ a:hover{ color: var(--highlight-300); }
 
 /* Warm, not saturated */
 .section--tint{
-  /* Fallback */
   background-color: color-mix(in srgb, var(--brand-primary) 86%, var(--orange-700) 14%);
   background:
     linear-gradient(180deg,
@@ -253,28 +244,32 @@ a:hover{ color: var(--highlight-300); }
   .theme-toggle:hover{ background: var(--surface-100); }
 }
 
-/* ===== Light Theme ===== */
+/* ===== Light Theme (target the HTML attribute so you only edit HEX vars) ===== */
 :root[data-theme="light"]{
   --ink-on-dark:#1E0930;
   --ink-on-light:#2A2420;
 
-  /* Light keeps paper base; orange accents come from the scale above */
-  --brand-primary:#EEE2CF;   /* becomes base */
-  --brand-paper:#1E0930;     /* text color on light */
+  /* Variable flips for light */
+  --brand-primary:#EEE2CF;   /* base surfaces */
+  --brand-paper:#1E0930;     /* main text */
 
-  --surface-100:#210c32;
+  --surface-100:#210c32;     /* keep subtle depth for buttons/badges */
   --surface-200:#2b1643;
   --border:#3c2858;
   --shadow: 0 6px 24px rgba(33,12,50,.28);
 }
 
-body[data-theme="light"]{
+/* Light: element styles that aren't pure variables */
+[data-theme="light"] body{
   color: var(--ink-on-light);
   background:#EEE2CF;
 }
-body[data-theme="light"] .section--light{
+[data-theme="light"] .section--light{
   background:#1E0930; color:#EEE2CF;
 }
-body[data-theme="light"] .card{
+[data-theme="light"] .card{
   background:#ffffff; color: var(--ink-on-dark); border:1px solid #e6dfd2;
 }
+/* Optional: link contrast in light */
+:root[data-theme="light"] a { color:#0F3E2D; }
+:root[data-theme="light"] a:hover { color:#7A2F1F; }
