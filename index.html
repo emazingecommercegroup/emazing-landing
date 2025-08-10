@@ -55,7 +55,6 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <!-- Logo (top-left) -->
       <a class="brand" href="/" aria-label="E-MAZING Commerce Group Home">
         <img class="brand-logo" src="assets/logo-full.png" alt="E-MAZING Commerce Group logo"
              width="36" height="36" decoding="async" fetchpriority="high" />
@@ -78,7 +77,6 @@
           <li><a href="#unicorn-funnel">Unicorn Funnel</a></li>
           <li><a href="#about-jennifer">Jennifer</a></li>
 
-          <!-- Theme toggle lives in the nav so it appears on mobile too -->
           <li>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false">
               <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
@@ -194,7 +192,7 @@
       </div>
     </section>
 
-    <!-- UNICORN FUNNEL (horn graphic + accordion legend) -->
+    <!-- UNICORN FUNNEL -->
     <section id="unicorn-funnel" class="section">
       <div class="container">
         <h2 class="h2">The Unicorn Funnel</h2>
@@ -203,53 +201,27 @@
         </p>
 
         <style>
-          /* Scoped to this section only */
-          #unicorn-funnel {
-            --horn-pink: #FF4FB7;
-            --horn-gold: #d2941f;
-            --horn-paper: #eee2cf;
-            --horn-sheen: rgba(255,255,255,.55);
-            --horn-outline: rgba(255,255,255,.18);
+          #unicorn-funnel{
+            --horn-pink:#FF4FB7; --horn-gold:#d2941f; --horn-paper:#EEE2CF;
+            --horn-sheen:rgba(255,255,255,.55); --horn-outline:rgba(255,255,255,.18);
           }
-          #unicorn-funnel .funnel-wrap {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 28px;
-            align-items: center;
+          #unicorn-funnel .funnel-wrap{ display:grid; grid-template-columns:1.2fr 1fr; gap:28px; align-items:center; }
+          @media (max-width:900px){ #unicorn-funnel .funnel-wrap{ grid-template-columns:1fr } }
+          #unicorn-funnel .legend .row{
+            display:grid; grid-template-columns:28px 1fr; gap:12px; align-items:start;
+            padding:10px 12px; border:1px solid rgba(255,255,255,.08); border-radius:14px; margin-bottom:10px;
+            cursor:pointer; transition: background .2s ease, border-color .2s ease;
           }
-          @media (max-width: 900px) {
-            #unicorn-funnel .funnel-wrap { grid-template-columns: 1fr; }
+          #unicorn-funnel .legend .row:hover{ background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.16) }
+          #unicorn-funnel .row[aria-expanded="true"]{ border-color:var(--horn-gold) }
+          #unicorn-funnel .chip{ width:22px; height:22px; border-radius:999px; border:1px solid rgba(255,255,255,.25) }
+          #unicorn-funnel .caption{ font-size:.9rem; opacity:.85; margin-top:6px }
+          #unicorn-funnel .expander{
+            grid-column:1 / -1; margin:-6px 0 10px 0; padding:0 12px 8px 40px;
+            border-left:2px dashed rgba(255,255,255,.18); overflow:hidden; max-height:0; transition:max-height .28s ease;
           }
-          #unicorn-funnel .legend .row {
-            display: grid;
-            grid-template-columns: 28px 1fr;
-            gap: 12px;
-            align-items: start;
-            padding: 10px 12px;
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 14px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            transition: background .2s ease, border-color .2s ease;
-          }
-          #unicorn-funnel .legend .row:hover { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.16); }
-          #unicorn-funnel .row[aria-expanded="true"] { border-color: var(--horn-gold); }
-          #unicorn-funnel .chip {
-            width: 22px; height: 22px; border-radius: 999px; border: 1px solid rgba(255,255,255,.25);
-          }
-          #unicorn-funnel .muted { opacity: .85; }
-          #unicorn-funnel .caption { font-size: .9rem; opacity: .85; margin-top: 6px; }
-          #unicorn-funnel .expander {
-            grid-column: 1 / -1;
-            margin: -6px 0 10px 0;
-            padding: 0 12px 8px 40px;
-            border-left: 2px dashed rgba(255,255,255,.18);
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height .28s ease;
-          }
-          #unicorn-funnel .expander ul { margin: 8px 0 0 0; padding-left: 18px; }
-          #unicorn-funnel .expander li { margin: 4px 0; }
+          #unicorn-funnel .expander ul{ margin:8px 0 0 0; padding-left:18px }
+          #unicorn-funnel .expander li{ margin:4px 0 }
         </style>
 
         <div class="funnel-wrap">
@@ -260,107 +232,54 @@
             <desc id="hornDesc">A tapered, banded horn with shimmering gradient, labeled from base to tip: Attract, Engage, Nurture, Convert, Grow.</desc>
 
             <defs>
-              <!-- Core gradient (animated shimmer) -->
               <linearGradient id="hornGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%"   stop-color="var(--horn-pink)" />
-                <stop offset="45%"  stop-color="var(--horn-gold)" />
-                <stop offset="70%"  stop-color="var(--horn-paper)" />
-                <stop offset="100%" stop-color="var(--horn-pink)" />
-                <animateTransform attributeName="gradientTransform" type="translate"
-                                  from="-0.2 0" to="0.2 0" dur="7s" repeatCount="indefinite"/>
+                <stop offset="0%" stop-color="var(--horn-pink)"/>
+                <stop offset="45%" stop-color="var(--horn-gold)"/>
+                <stop offset="70%" stop-color="var(--horn-paper)"/>
+                <stop offset="100%" stop-color="var(--horn-pink)"/>
+                <animateTransform attributeName="gradientTransform" type="translate" from="-0.2 0" to="0.2 0" dur="7s" repeatCount="indefinite"/>
               </linearGradient>
-
-              <!-- Soft highlight sweep that moves across the horn -->
               <linearGradient id="glintGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%"  stop-color="transparent"/>
+                <stop offset="0%" stop-color="transparent"/>
                 <stop offset="50%" stop-color="var(--horn-sheen)"/>
                 <stop offset="100%" stop-color="transparent"/>
-                <animateTransform attributeName="gradientTransform" type="translate"
-                                  from="-1 0" to="1 0" dur="3.8s" repeatCount="indefinite"/>
+                <animateTransform attributeName="gradientTransform" type="translate" from="-1 0" to="1 0" dur="3.8s" repeatCount="indefinite"/>
               </linearGradient>
-
-              <!-- Repeating diagonal stripes -> become horn rings via mask -->
-              <pattern id="ringPattern" width="22" height="100" patternUnits="userSpaceOnUse"
-                       patternTransform="skewX(-14) rotate(-14)">
-                <rect x="0" y="0" width="22" height="68" fill="white" />
+              <pattern id="ringPattern" width="22" height="100" patternUnits="userSpaceOnUse" patternTransform="skewX(-14) rotate(-14)">
+                <rect x="0" y="0" width="22" height="68" fill="white"/>
               </pattern>
-              <mask id="ringMask">
-                <rect x="0" y="0" width="100%" height="100%" fill="url(#ringPattern)" />
-              </mask>
-
-              <!-- Horn silhouette for clipping -->
-              <clipPath id="clipHorn">
-                <path id="hornPath"
-                  d="M160,470
-                     C260,410 360,360 520,300
-                     C560,285 590,270 610,250
-                     C640,220 650,185 640,150
-                     C615,160 595,170 570,175
-                     C560,140 540,120 520,110
-                     C480,95 430,110 380,130
-                     C300,160 230,210 180,260
-                     C140,300 120,350 110,400
-                     C100,440 120,470 160,470 Z" />
-              </clipPath>
-
-              <!-- Tiny glow for sparkles -->
-              <filter id="sparkle">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="b"/>
-                <feMerge>
-                  <feMergeNode in="b"/><feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
+              <mask id="ringMask"><rect x="0" y="0" width="100%" height="100%" fill="url(#ringPattern)"/></mask>
+              <clipPath id="clipHorn"><path id="hornPath" d="M160,470 C260,410 360,360 520,300 C560,285 590,270 610,250 C640,220 650,185 640,150 C615,160 595,170 570,175 C560,140 540,120 520,110 C480,95 430,110 380,130 C300,160 230,210 180,260 C140,300 120,350 110,400 C100,440 120,470 160,470 Z"/></clipPath>
+              <filter id="sparkle"><feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
             </defs>
 
-            <!-- Filled horn with gradient -->
             <g clip-path="url(#clipHorn)">
-              <rect x="0" y="0" width="100%" height="100%" fill="url(#hornGrad)" />
-              <!-- Rings mask on top to create banded horn -->
+              <rect x="0" y="0" width="100%" height="100%" fill="url(#hornGrad)"/>
               <rect x="0" y="0" width="100%" height="100%" fill="white" mask="url(#ringMask)" opacity=".22"/>
-              <!-- Moving highlight -->
               <rect x="0" y="0" width="100%" height="100%" fill="url(#glintGrad)" opacity=".35"/>
             </g>
 
-            <!-- Outline -->
             <use href="#hornPath" fill="none" stroke="var(--horn-outline)" stroke-width="2"/>
-
-            <!-- Sparkles -->
             <g filter="url(#sparkle)" opacity=".85">
-              <circle cx="505" cy="145" r="2.2" fill="var(--horn-paper)">
-                <animate attributeName="opacity" values="0;1;0" dur="2.8s" repeatCount="indefinite"/>
-              </circle>
-              <circle cx="450" cy="205" r="1.8" fill="var(--horn-pink)">
-                <animate attributeName="opacity" values="0;1;0" dur="3.2s" begin=".4s" repeatCount="indefinite"/>
-              </circle>
-              <circle cx="600" cy="245" r="2.0" fill="var(--horn-gold)">
-                <animate attributeName="opacity" values="0;1;0" dur="3.6s" begin=".8s" repeatCount="indefinite"/>
-              </circle>
+              <circle cx="505" cy="145" r="2.2" fill="var(--horn-paper)"><animate attributeName="opacity" values="0;1;0" dur="2.8s" repeatCount="indefinite"/></circle>
+              <circle cx="450" cy="205" r="1.8" fill="var(--horn-pink)"><animate attributeName="opacity" values="0;1;0" dur="3.2s" begin=".4s" repeatCount="indefinite"/></circle>
+              <circle cx="600" cy="245" r="2.0" fill="var(--horn-gold)"><animate attributeName="opacity" values="0;1;0" dur="3.6s" begin=".8s" repeatCount="indefinite"/></circle>
             </g>
 
-            <!-- Leader lines + stage dots -->
             <g stroke="rgba(255,255,255,.35)" stroke-width="1.5" fill="none">
-              <line x1="260" y1="400" x2="690" y2="400" />
-              <circle cx="260" cy="400" r="4" fill="var(--horn-pink)" />
-              <line x1="360" y1="340" x2="690" y2="340" />
-              <circle cx="360" cy="340" r="4" fill="var(--horn-gold)" />
-              <line x1="460" y1="285" x2="690" y2="285" />
-              <circle cx="460" cy="285" r="4" fill="var(--horn-paper)" />
-              <line x1="540" y1="230" x2="690" y2="230" />
-              <circle cx="540" cy="230" r="4" fill="var(--horn-pink)" />
-              <line x1="585" y1="180" x2="690" y2="180" />
-              <circle cx="585" cy="180" r="4" fill="var(--horn-gold)" />
+              <line x1="260" y1="400" x2="690" y2="400" /><circle cx="260" cy="400" r="4" fill="var(--horn-pink)" />
+              <line x1="360" y1="340" x2="690" y2="340" /><circle cx="360" cy="340" r="4" fill="var(--horn-gold)" />
+              <line x1="460" y1="285" x2="690" y2="285" /><circle cx="460" cy="285" r="4" fill="var(--horn-paper)"/>
+              <line x1="540" y1="230" x2="690" y2="230" /><circle cx="540" cy="230" r="4" fill="var(--horn-pink)"/>
+              <line x1="585" y1="180" x2="690" y2="180" /><circle cx="585" cy="180" r="4" fill="var(--horn-gold)"/>
             </g>
           </svg>
 
           <!-- LEGEND + EXPANDERS -->
           <div class="legend">
-            <!-- Row 1 -->
             <div class="row" role="button" tabindex="0" aria-expanded="false" aria-controls="exp-attract" data-target="exp-attract">
               <span class="chip" style="background: var(--horn-pink)"></span>
-              <div>
-                <strong>Attract</strong>
-                <div class="caption">Creator/PR moments, retail search/SEO prospecting, retail media (DSP/ONS).</div>
-              </div>
+              <div><strong>Attract</strong><div class="caption">Creator/PR moments, retail search/SEO prospecting, retail media (DSP/ONS).</div></div>
             </div>
             <div class="expander" id="exp-attract">
               <ul class="muted">
@@ -370,13 +289,9 @@
               </ul>
             </div>
 
-            <!-- Row 2 -->
             <div class="row" role="button" tabindex="0" aria-expanded="false" aria-controls="exp-engage" data-target="exp-engage">
               <span class="chip" style="background: var(--horn-gold)"></span>
-              <div>
-                <strong>Engage</strong>
-                <div class="caption">PDP storytelling & image stacks, A+ modules, claims/badging, variant logic.</div>
-              </div>
+              <div><strong>Engage</strong><div class="caption">PDP storytelling & image stacks, A+ modules, claims/badging, variant logic.</div></div>
             </div>
             <div class="expander" id="exp-engage">
               <ul class="muted">
@@ -386,13 +301,9 @@
               </ul>
             </div>
 
-            <!-- Row 3 -->
             <div class="row" role="button" tabindex="0" aria-expanded="false" aria-controls="exp-nurture" data-target="exp-nurture">
               <span class="chip" style="background: var(--horn-paper)"></span>
-              <div>
-                <strong>Nurture</strong>
-                <div class="caption">Review seeding & UGC loops, bundles/quizzes/FAQs, sampling & trial.</div>
-              </div>
+              <div><strong>Nurture</strong><div class="caption">Review seeding & UGC loops, bundles/quizzes/FAQs, sampling & trial.</div></div>
             </div>
             <div class="expander" id="exp-nurture">
               <ul class="muted">
@@ -402,13 +313,9 @@
               </ul>
             </div>
 
-            <!-- Row 4 -->
             <div class="row" role="button" tabindex="0" aria-expanded="false" aria-controls="exp-convert" data-target="exp-convert">
               <span class="chip" style="background: var(--horn-pink)"></span>
-              <div>
-                <strong>Convert</strong>
-                <div class="caption">Promo guardrails & price ladders, PDP retargeting, buy-box & availability governance.</div>
-              </div>
+              <div><strong>Convert</strong><div class="caption">Promo guardrails & price ladders, PDP retargeting, buy-box & availability governance.</div></div>
             </div>
             <div class="expander" id="exp-convert">
               <ul class="muted">
@@ -418,13 +325,9 @@
               </ul>
             </div>
 
-            <!-- Row 5 -->
             <div class="row" role="button" tabindex="0" aria-expanded="false" aria-controls="exp-grow" data-target="exp-grow">
               <span class="chip" style="background: var(--horn-gold)"></span>
-              <div>
-                <strong>Grow</strong>
-                <div class="caption">Subscribe & Save/repurchase nudges, CRM & remarketing, channel-wise assortment.</div>
-              </div>
+              <div><strong>Grow</strong><div class="caption">Subscribe & Save/repurchase nudges, CRM & remarketing, channel-wise assortment.</div></div>
             </div>
             <div class="expander" id="exp-grow">
               <ul class="muted">
@@ -436,9 +339,7 @@
 
             <div class="card" style="margin-top:12px">
               <h3 style="margin:0 0 6px">Measure What Matters</h3>
-              <p class="muted" style="margin:0">
-                Reach → PDP views → PDP quality score → Add-to-Cart rate → Unit velocity → Repeat rate.
-              </p>
+              <p class="muted" style="margin:0">Reach → PDP views → PDP quality score → Add-to-Cart rate → Unit velocity → Repeat rate.</p>
             </div>
           </div>
         </div>
@@ -484,11 +385,7 @@
 
         <div class="contact-cta">
           <a class="btn btn--primary" id="emailLink" href="mailto:Jennifer@emazingcommercegroup.com?subject=Project%20Inquiry%20from%20Website">Email Jennifer@emazingcommercegroup.com</a>
-
-          <!-- BOOKING -->
-          <a class="btn btn--ghost" id="bookLink" href="https://cal.com/e-mazingcommercegroup" target="_blank" rel="noopener">
-            Book a 20-min intro
-          </a>
+          <a class="btn btn--ghost" id="bookLink" href="https://cal.com/e-mazingcommercegroup" target="_blank" rel="noopener">Book a 20-min intro</a>
         </div>
 
         <noscript>
@@ -517,15 +414,13 @@
 
   <!-- Minimal JS: nav toggle, year, scroll-reveal, theme toggle, booking hook, funnel accordion -->
   <script>
-    // --- CONFIGURE ONCE: your real Calendly/Cal.com URL ---
     const CAL_LINK = 'https://cal.com/e-mazingcommercegroup';
-    // -------------------------------------------------------
 
     // Current year
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Mobile nav (guard in case element is missing)
+    // Mobile nav
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.getElementById('primary-nav');
     if (toggle && nav) {
@@ -536,18 +431,16 @@
       });
     }
 
-    // Scroll-reveal (respect reduced motion)
+    // Scroll-reveal
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!prefersReduced && 'IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
         entries.forEach(e => e.isIntersecting && e.target.classList.add('reveal--in'));
       }, { threshold: 0.12 });
-      document.querySelectorAll('.card, .h2, .lead, .cta').forEach(el => {
-        el.classList.add('reveal'); io.observe(el);
-      });
+      document.querySelectorAll('.card, .h2, .lead, .cta').forEach(el => { el.classList.add('reveal'); io.observe(el); });
     }
 
-    // Theme toggle (remembers choice)
+    // Theme toggle (sets on <html>, so CSS can target [data-theme="light"] …)
     const root = document.documentElement;
     const themeBtn = document.getElementById('themeToggle');
 
@@ -574,11 +467,9 @@
 
     // Booking link wiring
     const bookLink = document.getElementById('bookLink');
-    if (bookLink && CAL_LINK) {
-      bookLink.href = CAL_LINK;
-    }
+    if (bookLink && CAL_LINK) bookLink.href = CAL_LINK;
 
-    // ===== Unicorn Funnel accordion (single-open) =====
+    // Unicorn Funnel accordion (single-open)
     (function () {
       const container = document.getElementById('unicorn-funnel');
       if (!container) return;
@@ -587,47 +478,33 @@
       const expanders = container.querySelectorAll('.legend .expander');
 
       function closeAll() {
-        expanders.forEach(exp => {
-          exp.style.maxHeight = 0;
-          exp.classList.remove('open');
-        });
+        expanders.forEach(exp => { exp.style.maxHeight = 0; exp.classList.remove('open'); });
         rows.forEach(r => r.setAttribute('aria-expanded', 'false'));
       }
-
       function toggleRow(row) {
         const targetId = row.getAttribute('data-target');
         const expander = document.getElementById(targetId);
         if (!expander) return;
-
         const isOpen = row.getAttribute('aria-expanded') === 'true';
         if (isOpen) {
           row.setAttribute('aria-expanded', 'false');
           expander.style.maxHeight = 0;
           expander.classList.remove('open');
         } else {
-          // Accordion: close others
           closeAll();
           row.setAttribute('aria-expanded', 'true');
           expander.classList.add('open');
           expander.style.maxHeight = expander.scrollHeight + 'px';
         }
       }
-
       rows.forEach(row => {
         row.addEventListener('click', () => toggleRow(row));
         row.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            toggleRow(row);
-          }
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleRow(row); }
         });
       });
-
-      // Respect reduced-motion: disable animated max-height if requested
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-      if (reduce.matches) {
-        expanders.forEach(exp => exp.style.transition = 'none');
-      }
+      if (reduce.matches) expanders.forEach(exp => exp.style.transition = 'none');
     })();
   </script>
 </body>
