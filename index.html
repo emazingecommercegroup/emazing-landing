@@ -74,7 +74,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#five-e">5E Framework</a></li>
           <li><a href="#about">About</a></li>
-
+          <li><a href="#about-jennifer">Jennifer</a></li>
           <!-- Theme toggle lives in the nav so it appears on mobile too -->
           <li>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false">
@@ -145,7 +145,7 @@
             <h3>Growth & Media</h3>
             <p>Always-on retail media strategies that ladder into P&L reality.</p>
             <ul>
-              <li>Retail media planning</li>
+              <li>Retail media planning</</li>
               <li>Promo & pricing guardrails</li>
               <li>Test-and-learn design</li>
             </ul>
@@ -190,121 +190,19 @@
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <!-- New: About Jennifer -->
+    <section id="about-jennifer" class="section section--tint">
       <div class="container">
-        <h2 class="h2">Let’s talk</h2>
-        <p class="max-60">Tell us where you’re stuck. We’ll suggest a path and a starting scope.</p>
+        <h2 class="h2">About Jennifer Angelus</h2>
+        <div class="grid cards">
+          <article class="card">
+            <p class="max-60">
+              Jennifer Angelus is a CPG operator and builder who leads Digital Shelf &amp; Capabilities at Danone North America. She’s known for connecting brand, sales, retail media, and content operations to drive omnichannel growth—and for turning strategy into execution with speed. After nearly a decade at Danone across roles in brand strategy, trade marketing, and category insights, she founded E-MAZING Commerce Group to bring that same rigor and momentum to founder-led and scaling brands.
+            </p>
+            <p class="max-60 muted">
+              When you work with E-MAZING, you get Jennifer’s hands-on leadership: clear direction, clean execution, and the governance to sustain it.
+            </p>
+          </article>
 
-        <div class="contact-cta">
-          <a class="btn btn--primary" id="emailLink" href="mailto:Jennifer@emazingcommercegroup.com?subject=Project%20Inquiry%20from%20Website">Email Jennifer@emazingcommercegroup.com</a>
-
-          <!-- BOOKING: wired to your real Cal.com link; also works without JS -->
-          <a class="btn btn--ghost" id="bookLink" href="https://cal.com/e-mazingcommercegroup" target="_blank" rel="noopener">
-            Book a 20-min intro
-          </a>
-        </div>
-
-        <!-- No-JS fallback / reassurance -->
-        <noscript>
-          <p class="muted" style="margin-top:10px">
-            JavaScript is off. You can still
-            <a href="https://cal.com/e-mazingcommercegroup" target="_blank" rel="noopener">book a 20-min intro here</a>.
-          </p>
-        </noscript>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="foot-left">
-        <span>© <span id="year"></span> E-MAZING Commerce Group</span>
-        <span class="dot">•</span>
-        <span>Woman-owned</span>
-      </div>
-      <div class="foot-right">
-        <a href="https://www.linkedin.com/company/emazing-commerce-group" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:Jennifer@emazingcommercegroup.com">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Minimal JS: nav toggle, year, scroll-reveal, theme toggle, booking hook, GA4 hook -->
-  <script>
-    // --- CONFIGURE ONCE: your real Calendly/Cal.com URL ---
-    const CAL_LINK = 'https://cal.com/e-mazingcommercegroup';
-    // -------------------------------------------------------
-
-    // Current year
-    const yearEl = document.getElementById('year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // Mobile nav (guard in case element is missing)
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.getElementById('primary-nav');
-    if (toggle && nav) {
-      toggle.addEventListener('click', () => {
-        const expanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!expanded));
-        nav.classList.toggle('open');
-      });
-    }
-
-    // Scroll-reveal (respect reduced motion)
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!prefersReduced && 'IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => e.isIntersecting && e.target.classList.add('reveal--in'));
-      }, { threshold: 0.12 });
-      document.querySelectorAll('.card, .h2, .lead, .cta').forEach(el => {
-        el.classList.add('reveal'); io.observe(el);
-      });
-    }
-
-    // ===== Theme toggle (remembers choice) =====
-    const root = document.documentElement;
-    const themeBtn = document.getElementById('themeToggle');
-
-    function preferredTheme() {
-      const saved = localStorage.getItem('theme');
-      if (saved) return saved;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    function applyTheme(t) {
-      root.setAttribute('data-theme', t);
-      // aria-pressed = true when LIGHT mode is active
-      if (themeBtn) themeBtn.setAttribute('aria-pressed', String(t === 'light'));
-      localStorage.setItem('theme', t);
-    }
-    applyTheme(preferredTheme());
-
-    if (themeBtn) {
-      themeBtn.addEventListener('click', () => {
-        const current = root.getAttribute('data-theme') || 'dark';
-        applyTheme(current === 'dark' ? 'light' : 'dark');
-      });
-    }
-
-    // ===== Booking link wiring =====
-    const bookLink = document.getElementById('bookLink');
-    if (bookLink && CAL_LINK) {
-      bookLink.href = CAL_LINK;
-      // Optional: GA4 event for booking clicks (uncomment after adding gtag)
-      // bookLink.addEventListener('click', () => {
-      //   if (window.gtag) gtag('event', 'book_intro_click', { method: 'link', location: 'contact_section', url: CAL_LINK });
-      // });
-    }
-
-    // Optional GA4 event for email clicks (uncomment after adding gtag)
-    // document.getElementById('emailLink')?.addEventListener('click', () => {
-    //   if (window.gtag) gtag('event', 'email_click', { method: 'mailto', location: 'contact_section', to: 'Jennifer@emazingcommercegroup.com' });
-    // });
-
-    // GA4 base (paste your measurement ID)
-    // window.dataLayer = window.dataLayer || [];
-    // function gtag(){dataLayer.push(arguments);}
-    // gtag('js', new Date());
-    // gtag('config', 'G-XXXXXXXXXX');
-  </script>
-</body>
-</html>
+          <article class="card">
+            <h3>Selecte
