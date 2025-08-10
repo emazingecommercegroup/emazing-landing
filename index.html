@@ -1,44 +1,327 @@
-<script>
-  const CALENDLY_URL = "http://cal.com/e-mazingcommercegroup";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>E‑MAZING Commerce Group | Digital Redefined</title>
+  <meta name="description" content="Where the energy of a lion meets the magic of a unicorn. Bold strategy. Magical results. We redefine digital for CPG brands." />
 
-  // Mobile nav
-  const navBtn = document.querySelector('.nav-toggle');
-  const menu = document.getElementById('primary-menu');
-  navBtn.addEventListener('click', () => {
-    const open = navBtn.getAttribute('aria-expanded') === 'true';
-    navBtn.setAttribute('aria-expanded', String(!open));
-    menu.classList.toggle('open');
-  });
+  <!-- Open Graph -->
+  <meta property="og:title" content="E‑MAZING Commerce Group | Digital Redefined" />
+  <meta property="og:description" content="Bold Strategy. Magical Results. We help CPG brands turn commercialization into conversion." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/logo-full.png" />
+  <meta property="og:url" content="https://your-domain.com" />
 
-  // Theme toggle
-  const toggle = document.getElementById('themeToggle');
-  const stored = localStorage.getItem('theme');
-  if (stored) document.body.className = stored;
-  toggle.checked = document.body.classList.contains('dark');
-  toggle.addEventListener('change', () => {
-    document.body.classList.toggle('dark');
-    document.body.classList.toggle('light');
-    localStorage.setItem('theme', document.body.className);
-  });
+  <link rel="icon" href="/assets/favicon.png" />
+  <link rel="preload" href="/assets/logo-full.png" as="image" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="dark">
+  <!-- Header -->
+  <header class="site-header container">
+    <a class="brand" href="#home" aria-label="E‑MAZING Commerce Group">
+      <img src="/assets/logo-full.png" alt="E‑MAZING Commerce Group logo" class="logo" />
+    </a>
 
-  // Year
-  document.getElementById('year').textContent = new Date().getFullYear();
+    <nav class="nav" aria-label="Primary">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+      <ul id="primary-menu" class="nav-list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#method">Methodology</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#clients">Who We Serve</a></li>
+        <li><a href="#values">Values</a></li>
+        <li><a href="#language">Our Language</a></li>
+        <li><a href="#contact" class="cta">Book a Call</a></li>
+      </ul>
+    </nav>
 
-  // Calendly hookup
-  const calendlyEmbed = document.querySelector('.calendly-inline-widget');
-  function showCalendly(e) {
-    e.preventDefault();
-    calendlyEmbed.style.display = 'block';
-    window.scrollTo({ top: calendlyEmbed.offsetTop - 80, behavior: 'smooth' });
-  }
+    <!-- Theme toggle -->
+    <label class="toggle" title="Toggle theme">
+      <input id="themeToggle" type="checkbox" aria-label="Toggle dark mode" checked />
+      <span>Dark</span>
+    </label>
+  </header>
 
-  // Contact section button
-  const calendlyBtn = document.getElementById('calendlyLink');
-  calendlyBtn.setAttribute('href', CALENDLY_URL);
-  calendlyBtn.addEventListener('click', showCalendly);
+  <main id="home">
+    <!-- Hero -->
+    <section class="hero container">
+      <h1>Digital Redefined</h1>
+      <p class="sub">Where the <em>energy</em> of a lion meets the <em>magic</em> of a unicorn.</p>
+      <p class="tagline">“Whatever you do… do it with intention.”</p>
+      <div class="hero-actions">
+        <a href="#contact" class="button primary">Start a Project</a>
+        <a href="#method" class="button ghost">Our Framework</a>
+        <a href="#" id="calendlyHero" class="button primary">Schedule Now</a>
+      </div>
+    </section>
 
-  // Hero section button
-  const calendlyHero = document.getElementById('calendlyHero');
-  calendlyHero.setAttribute('href', CALENDLY_URL);
-  calendlyHero.addEventListener('click', showCalendly);
-</script>
+    <!-- About -->
+    <section id="about" class="section container">
+      <h2>About E‑MAZING</h2>
+      <p>
+        Jennifer Angelus is an accomplished CPG and eCommerce <strong>unicorn</strong> who has shaped
+        omnichannel strategy through strategic digital marketing, content creation, and trade activation.
+        Recognized for dynamic leadership, a team‑driven growth mindset, and the ability to combine
+        data insights with digital transformation, Jennifer turns <strong>commercialization into conversion</strong>.
+      </p>
+
+      <!-- Brand Manifesto -->
+      <blockquote class="manifesto">
+        <p>
+          At the crossroads of power and possibility, <strong>E‑MAZING Commerce Group</strong> stands as a beacon for those ready to rise.
+          Our emblem—born from the strength of the lion and the wisdom of the unicorn—reminds us that greatness is not given; it is claimed.
+          <strong>Gold</strong> speaks to our pursuit of abundance, <strong>white</strong> reflects our unwavering integrity, and
+          <strong>purple</strong> carries the magic that fuels our vision. We are more than commerce; we are creators of gateways,
+          builders of legacies, and igniters of dreams.
+        </p>
+        <footer>“Lead with courage. Build with purpose. Inspire without limits.”</footer>
+      </blockquote>
+
+      <div class="color-key" role="note" aria-label="Brand colors meaning">
+        <span class="chip gold">Gold = Abundance</span>
+        <span class="chip white">White = Integrity</span>
+        <span class="chip purple">Purple = Magic</span>
+      </div>
+
+      <blockquote class="pull">Unrivaled. Inspired. Redefined.</blockquote>
+    </section>
+
+    <!-- Methodology -->
+    <section id="method" class="section container">
+      <h2>Methodology: From 5P’s to 5E’s</h2>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Experience</h3>
+          <ul>
+            <li>Define the consumer &amp; shopper experience</li>
+            <li>Clarify positioning &amp; RTBs</li>
+            <li>Identify targets &amp; occasions</li>
+            <li>Align seasonality &amp; portfolio strategy</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Equity</h3>
+          <ul>
+            <li>Pricing strategy aligned to brand equity</li>
+            <li>Price/pack architecture</li>
+            <li>Value messaging &amp; price tiers</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Energy</h3>
+          <ul>
+            <li>Powerful brand voice</li>
+            <li>Inspire &amp; evoke the right emotions</li>
+            <li>Know your consumer &amp; shopper deeply</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Engagement</h3>
+          <ul>
+            <li>Intentional interaction tactics</li>
+            <li>Promo strategy &amp; frequency</li>
+            <li>Compelling promotional types</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Everywhere</h3>
+          <ul>
+            <li>Omnichannel presence</li>
+            <li>Channel strategy where shoppers are</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="table-wrap">
+        <table aria-label="5P to 5E mapping">
+          <thead>
+            <tr><th>5P’s</th><th>5E’s</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Product / Portfolio</td><td>Experience</td></tr>
+            <tr><td>Price</td><td>Equity</td></tr>
+            <tr><td>People</td><td>Energy</td></tr>
+            <tr><td>Promotion</td><td>Engagement</td></tr>
+            <tr><td>Place</td><td>Everywhere</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- E‑Word Funnel -->
+      <div class="funnel">
+        <h3>The E‑Word Marketing Funnel</h3>
+        <ol>
+          <li><strong>Exposure</strong> – Getting your brand seen</li>
+          <li><strong>Education</strong> – Informing &amp; teaching</li>
+          <li><strong>Engagement</strong> – Two‑way interaction</li>
+          <li><strong>Exchange</strong> – Moment of transaction</li>
+          <li><strong>Endorsement</strong> – Customer advocacy</li>
+          <li><strong>Evangelism</strong> – Active brand promotion</li>
+        </ol>
+        <p class="hint">From Exposure to Evangelism, we design momentum at every stage.</p>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section container">
+      <h2>Services</h2>
+      <p class="lede">Bold strategy with flawless execution.</p>
+      <ul class="grid">
+        <li class="service">
+          <h4>Ignite: 5P → 5E Evaluation</h4>
+          <p>Audit current strategy and transform to an energy‑led, omnichannel plan.</p>
+        </li>
+        <li class="service">
+          <h4>Illuminate: PDP Analysis &amp; Redesign</h4>
+          <p>Conversion‑first product detail pages grounded in data and shopper behavior.</p>
+        </li>
+        <li class="service">
+          <h4>Elevate: Commercialization Plans</h4>
+          <p>Actionable recommendations from launch through scale.</p>
+        </li>
+        <li class="service">
+          <h4>Unleash: Custom Partnership Matrix</h4>
+          <p>Right partners, right moments, mapped to growth objectives.</p>
+        </li>
+        <li class="service">
+          <h4>Command: Execution Support</h4>
+          <p>Hands‑on leadership from strategy to live, with measurable outcomes.</p>
+        </li>
+      </ul>
+
+      <p class="tagline center">
+        Where Power Meets Possibility — <strong>Bold Strategy. Magical Results.</strong>
+      </p>
+    </section>
+
+    <!-- Who We Serve -->
+    <section id="clients" class="section container">
+      <h2>Who We Serve</h2>
+      <p>
+        Boutique companies ready to become the <strong>unicorn challenger brand</strong>,
+        with a focus on <strong>health &amp; wellness portfolios</strong>. Clear identity.
+        Unshakable authenticity. A partner you can trust to inspire and bring your brand
+        to life — <em>digital redefined</em>.
+      </p>
+    </section>
+
+    <!-- Values -->
+    <section id="values" class="section container">
+      <h2>Values</h2>
+      <ul class="pill-list">
+        <li>Energy is everything</li>
+        <li>Be the unicorn</li>
+        <li>No limit to success</li>
+        <li>Celebrate wins</li>
+        <li>Integrity &amp; trust</li>
+        <li>Authenticity + storytelling</li>
+        <li>Be bold, but intentional</li>
+      </ul>
+      <p class="sig">“Lead with courage. Build with purpose. Inspire without limits.”</p>
+      <p class="sig">What happens when a unicorn’s possibilities align with a lion’s energy?</p>
+    </section>
+
+    <!-- Word Bank -->
+    <section id="language" class="section container">
+      <h2>Our Language</h2>
+      <div class="wordbanks">
+        <div>
+          <h4>Power Words</h4>
+          <ul class="pill-list">
+            <li>Lead</li><li>Ignite</li><li>Rise</li><li>Command</li><li>Bold</li><li>Unstoppable</li><li>Legacy</li><li>Courage</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Magic Words</h4>
+          <ul class="pill-list">
+            <li>Illuminate</li><li>Transform</li><li>Create</li><li>Stardust</li><li>Wonder</li><li>Light</li><li>Vision</li><li>Gateway</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Value Words</h4>
+          <ul class="pill-list">
+            <li>Empower</li><li>Elevate</li><li>Inspire</li><li>Unleash</li><li>Unlock</li><li>Awaken</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section container contact">
+      <h2>Book a Call</h2>
+      <p>Ready to redefine digital? Let’s talk.</p>
+
+      <div class="contact-actions">
+        <a class="button primary" href="mailto:Jennifer@emazingcommercegroup.com">Email Jennifer</a>
+        <a class="button" href="#" id="calendlyLink" aria-label="Book via Calendly">Schedule on Calendly</a>
+      </div>
+
+      <!-- Inline scheduler (revealed on click) -->
+      <div class="calendly-inline-widget" data-url="http://cal.com/e-mazingcommercegroup" style="display:none; min-width:320px; height:740px;"></div>
+      <noscript>Please enable JavaScript to book meetings.</noscript>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p>© <span id="year"></span> E‑MAZING Commerce Group. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ===== Config =====
+    const CALENDLY_URL = "http://cal.com/e-mazingcommercegroup";
+
+    // Mobile nav
+    const navBtn = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('primary-menu');
+    navBtn.addEventListener('click', () => {
+      const open = navBtn.getAttribute('aria-expanded') === 'true';
+      navBtn.setAttribute('aria-expanded', String(!open));
+      menu.classList.toggle('open');
+    });
+
+    // Theme toggle (dark by default)
+    const toggle = document.getElementById('themeToggle');
+    const stored = localStorage.getItem('theme');
+    if (stored) document.body.className = stored;
+    toggle.checked = document.body.classList.contains('dark');
+    toggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark');
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.className);
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Calendly hookup (both buttons → inline reveal)
+    const calendlyEmbed = document.querySelector('.calendly-inline-widget');
+    const calendlyBtn = document.getElementById('calendlyLink');
+    const calendlyHero = document.getElementById('calendlyHero');
+
+    function showCalendly(e){
+      e.preventDefault();
+      // set hrefs for accessibility + fallback
+      calendlyBtn.setAttribute('href', CALENDLY_URL);
+      calendlyHero.setAttribute('href', CALENDLY_URL);
+      // reveal embed
+      if (calendlyEmbed) {
+        calendlyEmbed.style.display = 'block';
+        window.scrollTo({ top: calendlyEmbed.offsetTop - 80, behavior: 'smooth' });
+      } else {
+        // fallback: open in new tab
+        window.open(CALENDLY_URL, '_blank');
+      }
+    }
+
+    if (calendlyBtn) calendlyBtn.addEventListener('click', showCalendly);
+    if (calendlyHero) calendlyHero.addEventListener('click', showCalendly);
+  </script>
+</body>
+</html>
