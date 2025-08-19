@@ -1,7 +1,6 @@
 /* ========================================================
-   E-MAZING Commerce Group – styles.css (Colorboard v1.5 – Balanced)
-   Date: 2025-08-10
-   Goal: Keep the brand orange visible, but restore a plum base so it’s not overwhelming.
+   E-MAZING Commerce Group – style.css (Colorboard v1.5 – Balanced)
+   Date: 2025-08-18  Build: B18
    ======================================================== */
 
 :root{
@@ -228,9 +227,15 @@ a:hover{ color: var(--highlight-300); }
 }
 .input::placeholder, textarea::placeholder{ color:#cdbfafaa; }
 
-/* ===== Animations: reveal ===== */
-.reveal{ opacity:0; transform: translateY(10px); transition: opacity .4s ease, transform .4s ease; }
-.reveal--in{ opacity:1; transform: translateY(0); }
+/* ===== Animations: reveal (progressive) ===== */
+.reveal{ /* visible by default; JS will add the fade */
+  opacity:1; transform:none;
+}
+html.js .reveal{
+  opacity:0; transform: translateY(10px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.reveal--in{ opacity:1 !important; transform: translateY(0) !important; }
 
 /* ===== Theme Toggle (button style only) ===== */
 .theme-toggle{
@@ -244,22 +249,21 @@ a:hover{ color: var(--highlight-300); }
   .theme-toggle:hover{ background: var(--surface-100); }
 }
 
-/* ===== Light Theme (target the HTML attribute so you only edit HEX vars) ===== */
+/* ===== Light Theme (via [data-theme="light"]) ===== */
 :root[data-theme="light"]{
   --ink-on-dark:#1E0930;
   --ink-on-light:#2A2420;
 
-  /* Variable flips for light */
   --brand-primary:#EEE2CF;   /* base surfaces */
   --brand-paper:#1E0930;     /* main text */
 
-  --surface-100:#210c32;     /* keep subtle depth for buttons/badges */
+  --surface-100:#210c32;
   --surface-200:#2b1643;
   --border:#3c2858;
   --shadow: 0 6px 24px rgba(33,12,50,.28);
 }
 
-/* Light: element styles that aren't pure variables */
+/* Light: element tweaks */
 [data-theme="light"] body{
   color: var(--ink-on-light);
   background:#EEE2CF;
@@ -270,6 +274,5 @@ a:hover{ color: var(--highlight-300); }
 [data-theme="light"] .card{
   background:#ffffff; color: var(--ink-on-dark); border:1px solid #e6dfd2;
 }
-/* Optional: link contrast in light */
 :root[data-theme="light"] a { color:#0F3E2D; }
 :root[data-theme="light"] a:hover { color:#7A2F1F; }
