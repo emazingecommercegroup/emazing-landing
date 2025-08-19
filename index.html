@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- BUILD: UF-8 -->
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
@@ -20,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
   <!-- Styles (cache-busted) -->
-  <link rel="stylesheet" href="styles.css?v=2025-08-10-uf-8" />
+  <link rel="stylesheet" href="style.css?v=2025-08-18-b1" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
@@ -33,9 +32,9 @@
   <meta name="twitter:description" content="Boutique consulting for digital shelf, commercialization, and growth.">
   <meta name="twitter:image" content="https://e-mazingcommercegroup.com/assets/og-preview.png">
 
-  <!-- Preload small logo (optional) -->
+  <!-- Preload small logo -->
   <link rel="preload" href="assets/logo-full.png" as="image" />
-  
+
   <!-- Schema.org -->
   <script type="application/ld+json">
   {
@@ -46,12 +45,15 @@
     "logo":"https://e-mazingcommercegroup.com/assets/logo-full.png",
     "description":"Boutique consulting for digital shelf, commercialization, and growth.",
     "email":"Jennifer@emazingcommercegroup.com",
-    "founder": "Jennifer Angelus",
+    "founder":"Jennifer Angelus",
     "sameAs":["https://www.linkedin.com/company/emazing-commerce-group"]
   }
   </script>
+
+  <!-- Progressive enhancement flag so we only animate when JS is active -->
+  <script>document.documentElement.classList.add('js');</script>
 </head>
-<body data-build="UF-8">
+<body data-build="B18">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -77,7 +79,7 @@
           <li><a href="#five-e">5E Framework</a></li>
           <li><a href="#unicorn-funnel">Unicorn Funnel</a></li>
           <li><a href="#about-jennifer">Jennifer</a></li>
-
+          <li class="hide-mobile"><a class="btn btn--primary" href="#contact">Let’s Talk</a></li>
           <li>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false">
               <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
@@ -88,8 +90,6 @@
               </svg>
             </button>
           </li>
-
-          <li class="hide-mobile"><a class="btn btn--primary" href="#contact">Let’s Talk</a></li>
         </ul>
       </nav>
     </div>
@@ -202,6 +202,7 @@
         </p>
 
         <style>
+          /* Section-scoped styles to keep the SVG + legend self-contained */
           #unicorn-funnel{
             --horn-pink:#FF4FB7; --horn-gold:#d2941f; --horn-paper:#EEE2CF;
             --horn-sheen:rgba(255,255,255,.55); --horn-outline:rgba(255,255,255,.18);
@@ -227,6 +228,7 @@
 
         <div class="funnel-wrap">
           <!-- HORN SVG -->
+          <!-- (unchanged from your draft) -->
           <svg class="horn" viewBox="0 0 720 520" role="img" aria-labelledby="hornTitle hornDesc"
                preserveAspectRatio="xMidYMid meet" style="width:100%; height:auto; display:block">
             <title id="hornTitle">Unicorn Horn Funnel</title>
@@ -405,6 +407,8 @@
         <span>© <span id="year"></span> E-MAZING Commerce Group</span>
         <span class="dot">•</span>
         <span>Woman-owned</span>
+        <span class="dot">•</span>
+        <span id="build">Build B18</span>
       </div>
       <div class="foot-right">
         <a href="https://www.linkedin.com/company/emazing-commerce-group" target="_blank" rel="noopener">LinkedIn</a>
@@ -432,19 +436,19 @@
       });
     }
 
-    // Scroll-reveal
+    // Scroll-reveal (progressive: only hide when JS active)
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!prefersReduced && 'IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
         entries.forEach(e => e.isIntersecting && e.target.classList.add('reveal--in'));
       }, { threshold: 0.12 });
-      document.querySelectorAll('.card, .h2, .lead, .cta').forEach(el => { el.classList.add('reveal'); io.observe(el); });
+      document.querySelectorAll('.card, .h2, .lead, .cta')
+        .forEach(el => { el.classList.add('reveal'); io.observe(el); });
     }
 
     // Theme toggle (keeps attribute on <html>)
     const root = document.documentElement;
     const themeBtn = document.getElementById('themeToggle');
-
     function preferredTheme() {
       const saved = localStorage.getItem('theme');
       if (saved) return saved;
@@ -458,7 +462,6 @@
       localStorage.setItem('theme', t);
     }
     applyTheme(preferredTheme());
-
     if (themeBtn) {
       themeBtn.addEventListener('click', () => {
         const current = root.getAttribute('data-theme') || 'dark';
@@ -474,10 +477,8 @@
     (function () {
       const container = document.getElementById('unicorn-funnel');
       if (!container) return;
-
       const rows = container.querySelectorAll('.legend .row');
       const expanders = container.querySelectorAll('.legend .expander');
-
       function closeAll() {
         expanders.forEach(exp => { exp.style.maxHeight = 0; exp.classList.remove('open'); });
         rows.forEach(r => r.setAttribute('aria-expanded', 'false'));
