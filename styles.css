@@ -67,6 +67,31 @@ body{
 a{ color: var(--support-300); text-decoration: none; }
 a:hover{ color: var(--highlight-300); }
 
+/* ===== Accessible skip link (hidden until keyboard focus) ===== */
+.skip-link{
+  position:absolute;
+  top:-48px;           /* off-screen by default */
+  left:12px;
+  padding:8px 14px;
+  border-radius:10px;
+  border:2px solid var(--brand-accent);
+  background: var(--brand-paper);
+  color: var(--ink-on-dark);
+  text-decoration:none;
+  font-weight:650;
+  z-index:1000;
+  box-shadow: var(--shadow);
+  transition: top .2s ease;
+}
+.skip-link:focus{
+  top:12px;            /* slides into view when tabbed to */
+}
+:root[data-theme="light"] .skip-link{
+  background:#ffffff;
+  color:#1E0930;
+  border-color: var(--highlight-700);
+}
+
 /* ===== Header / Nav ===== */
 .header, .site-header{
   position: sticky; top:0; z-index:50;
